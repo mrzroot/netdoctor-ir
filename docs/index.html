@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en" data-lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>netdoctor-ir: connectivity doctor & mirror switcher for developers in Iran</title>
+<meta name="description" content="Find out why pip, npm, docker or go fail in Iran (DNS hijack, SNI filtering or a sanction page), benchmark anti-sanction DNS resolvers, and switch to working mirrors with automatic backups.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f8fc" media="(prefers-color-scheme: light)">
+<meta property="og:title" content="netdoctor-ir">
+<meta property="og:description" content="Connectivity doctor & mirror switcher for developers in Iran.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mrzroot.github.io/netdoctor-ir/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --bg:#f7f8fc; --bg2:#ffffff; --fg:#0f172a; --muted:#5b6478; --line:#e3e7f0;
+  --card:#ffffff; --accent:#0891b2; --accent2:#7c3aed; --ok:#16a34a; --bad:#dc2626;
+  --warn:#d97706; --mag:#c026d3; --code:#0b1020; --codefg:#e5e7eb;
+  --shadow:0 1px 2px rgba(15,23,42,.06),0 8px 24px rgba(15,23,42,.06);
+  --radius:16px;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --fa:Vazirmatn,"Vazir","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0b1020; --bg2:#0f1629; --fg:#e6e9f2; --muted:#9aa4bd; --line:#1f2942;
+    --card:#111a30; --accent:#22d3ee; --accent2:#a78bfa; --ok:#4ade80; --bad:#f87171;
+    --warn:#fbbf24; --mag:#e879f9; --code:#070b16; --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.35); }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+html[data-lang=fa] body{font-family:var(--fa)}
+html[data-lang=en] [lang=fa]{display:none!important}
+html[data-lang=fa] [lang=en]{display:none!important}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header.nav{position:sticky;top:0;z-index:10;backdrop-filter:saturate(1.4) blur(10px);
+  background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--fg);letter-spacing:-.01em}
+.brand img{width:28px;height:28px}
+.nav nav{display:flex;gap:18px;margin-inline-start:auto;align-items:center}
+.nav nav a{color:var(--muted);font-size:15px} .nav nav a:hover{color:var(--fg);text-decoration:none}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{all:unset;cursor:pointer;padding:4px 12px;font-size:14px;color:var(--muted)}
+.lang button[aria-pressed=true]{background:var(--fg);color:var(--bg)}
+.hero{position:relative;padding:72px 0 40px;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-30% -10% auto -10%;height:520px;z-index:-1;
+  background:radial-gradient(600px 300px at 20% 30%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 70%),
+             radial-gradient(500px 280px at 80% 10%,color-mix(in srgb,var(--accent2) 22%,transparent),transparent 70%)}
+.pill{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);
+  border:1px solid var(--line);background:var(--bg2);padding:4px 12px;border-radius:999px}
+.pill b{color:var(--ok)}
+h1{font-size:clamp(34px,5.4vw,60px);line-height:1.08;letter-spacing:-.03em;margin:18px 0 16px}
+html[data-lang=fa] h1{letter-spacing:0;line-height:1.35}
+.grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:760px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:600;border:1px solid var(--line);color:var(--fg);background:var(--bg2)}
+.btn:hover{text-decoration:none;border-color:var(--accent)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;border:0}
+.install{display:flex;align-items:center;gap:10px;margin-top:18px;max-width:640px;background:var(--code);color:var(--codefg);
+  border-radius:12px;padding:12px 14px;font:14px/1.5 var(--mono);direction:ltr;text-align:left}
+.install code{flex:1;overflow-x:auto;white-space:nowrap} .install .p{color:#4ade80;user-select:none}
+.copy{all:unset;cursor:pointer;font:12px var(--sans);color:#9aa4bd;border:1px solid #2a3553;padding:4px 10px;border-radius:8px}
+.copy:hover{color:#fff;border-color:#4b5a82}
+.term{margin:44px auto 0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);background:#0c0c0c}
+.term img{display:block;width:100%;height:auto}
+.caption{font-size:13px;color:var(--muted);text-align:center;margin-top:10px}
+section{padding:64px 0}
+section h2{font-size:clamp(26px,3.4vw,36px);letter-spacing:-.02em;margin:0 0 10px}
+html[data-lang=fa] section h2{letter-spacing:0}
+.sub{color:var(--muted);max-width:720px;margin:0 0 32px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.card h3{margin:6px 0 8px;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.card .cmd{font:13px var(--mono);color:var(--accent);direction:ltr;display:inline-block}
+.icon{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-size:20px;
+  background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.steps{counter-reset:s;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.step{position:relative;padding:18px 18px 18px 18px;border-radius:14px;border:1px dashed var(--line);background:var(--bg2)}
+.step:before{counter-increment:s;content:counter(s);position:absolute;top:-12px;inset-inline-start:16px;width:24px;height:24px;border-radius:50%;
+  background:var(--fg);color:var(--bg);display:grid;place-items:center;font-size:13px;font-weight:700}
+.step b{display:block;margin-bottom:4px}
+.step span{color:var(--muted);font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:15px;background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:start;vertical-align:top}
+th{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--bg2)}
+tr:last-child td{border-bottom:0}
+.v{font:600 13px var(--mono);white-space:nowrap;direction:ltr;display:inline-block}
+.v.ok{color:var(--ok)} .v.bad{color:var(--bad)} .v.mag{color:var(--mag)} .v.warn{color:var(--warn)}
+pre{background:var(--code);color:var(--codefg);padding:18px;border-radius:14px;overflow:auto;font:14px/1.6 var(--mono);direction:ltr;text-align:left;margin:0}
+pre .c{color:#6b7a99}
+.two{display:grid;gap:22px;grid-template-columns:1fr 1fr} @media (max-width:860px){.two{grid-template-columns:1fr}}
+.shots{display:grid;gap:22px}
+.shots figure{margin:0}
+.shots figcaption{color:var(--muted);font-size:14px;margin-top:8px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--muted);margin:10px 0 0}
+.note{border-inline-start:4px solid var(--warn);background:color-mix(in srgb,var(--warn) 10%,var(--card));padding:16px 18px;border-radius:12px;color:var(--fg)}
+footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+@media (max-width:720px){.nav nav a.hide-sm{display:none}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#"><img src="favicon.svg" alt=""> netdoctor-ir</a>
+    <nav>
+      <a class="hide-sm" href="#features"><span lang="en">Features</span><span lang="fa">امکانات</span></a>
+      <a class="hide-sm" href="#how"><span lang="en">How it works</span><span lang="fa">چطور کار می‌کند</span></a>
+      <a class="hide-sm" href="#faq"><span lang="en">FAQ</span><span lang="fa">پرسش‌ها</span></a>
+      <a href="https://github.com/mrzroot/netdoctor-ir">GitHub</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-set-lang="fa" aria-pressed="false">فا</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <span class="pill"><b>●</b> <span lang="en">v0.1.0 · open source · MIT</span><span lang="fa">نسخهٔ ۰٫۱٫۰ · متن‌باز · MIT</span></span>
+    <h1>
+      <span lang="en">Stop guessing why<br><span class="grad">pip, npm &amp; docker</span> fail.</span>
+      <span lang="fa">دیگر حدس نزنید چرا<br><span class="grad">pip، npm و docker</span> کار نمی‌کنند.</span>
+    </h1>
+    <p class="lead">
+      <span lang="en">netdoctor is a connectivity doctor and mirror switcher for developers in Iran. It shows whether a failure is a DNS hijack, SNI filtering or a sanction page, finds the DNS resolver and package mirror that work <em>today</em>, and switches your tools to them with automatic backups.</span>
+      <span lang="fa">netdoctor ابزاری برای برنامه‌نویس‌های داخل ایران است که مشکل اتصال را تشخیص می‌دهد و میرورها را عوض می‌کند. نشان می‌دهد خطا از دستکاری DNS است، از فیلترینگ روی SNI یا از صفحهٔ تحریم. بعد DNS و میرور بستهٔ نرم‌افزاری‌ای را که <em>امروز</em> کار می‌کند پیدا می‌کند و ابزارهایتان را با پشتیبان‌گیری خودکار روی آن تنظیم می‌کند.</span>
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/mrzroot/netdoctor-ir#quick-start"><span lang="en">Get started →</span><span lang="fa">شروع کنید ←</span></a>
+      <a class="btn" href="https://github.com/mrzroot/netdoctor-ir"><span lang="en">View on GitHub</span><span lang="fa">مشاهده در گیت‌هاب</span></a>
+      <a class="btn" href="https://github.com/mrzroot/netdoctor-ir/releases/latest"><span lang="en">Latest release</span><span lang="fa">آخرین نسخه</span></a>
+    </div>
+    <div class="install"><span class="p">$</span><code id="install-cmd">pipx install git+https://github.com/mrzroot/netdoctor-ir.git</code><button class="copy" type="button" data-copy="install-cmd"><span lang="en">Copy</span><span lang="fa">کپی</span></button></div>
+
+    <div class="term"><img src="img/hero.svg" alt="Real netdoctor scan output: developer services with DNS, TCP, TLS and HTTP timings and verdicts" width="1100" height="560"></div>
+    <p class="caption">
+      <span lang="en">Real output, captured on a build server <strong>outside Iran</strong> (that's why it's all green). On an Iranian connection you'd see <span class="v mag">⊘ SANCTIONED</span> or <span class="v bad">✖ FILTERED</span> rows.</span>
+      <span lang="fa">خروجی واقعی برنامه، گرفته‌شده روی سروری <strong>خارج از ایران</strong> (برای همین همه‌چیز سبز است). روی اینترنت ایران ردیف‌هایی مثل <span class="v mag">⊘ SANCTIONED</span> یا <span class="v bad">✖ FILTERED</span> هم می‌بینید.</span>
+    </p>
+  </div>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <h2><span lang="en">Everything you check by hand, in one command</span><span lang="fa">هر چه دستی چک می‌کردید، با یک دستور</span></h2>
+    <p class="sub"><span lang="en">Async, typed Python with no root, no telemetry and no surprises. It measures and configures; it never bypasses anything by itself.</span><span lang="fa">پایتون async و تایپ‌شده؛ بدون نیاز به root، بدون تله‌متری و بدون غافلگیری. اندازه می‌گیرد و تنظیم می‌کند و خودش هیچ محدودیتی را دور نمی‌زند.</span></p>
+    <div class="grid">
+      <div class="card"><div class="icon">🩺</div><h3><span class="cmd">netdoctor scan</span></h3>
+        <p><span lang="en">Checks 38 developer services (PyPI, npm, Docker Hub, Go proxy, GitHub, Google Fonts, Maven, apt…) through DNS → TCP → TLS → HTTP, and explains every failure.</span><span lang="fa">۳۸ سرویس پرکاربرد توسعه (PyPI، npm، Docker Hub، Go proxy، گیت‌هاب، Google Fonts، Maven، apt و…) را در مراحل DNS، TCP، TLS و HTTP بررسی می‌کند و دلیل هر خطا را توضیح می‌دهد.</span></p></div>
+      <div class="card"><div class="icon">🧭</div><h3><span class="cmd">netdoctor dns --deep</span></h3>
+        <p><span lang="en">Ranks 13 public and Iranian anti-sanction resolvers (Shecan, 403.online, Begzar, Electro, Radar…) by success and latency, and shows which one actually unblocks Docker Hub.</span><span lang="fa">۱۳ DNS عمومی و ضدتحریم ایرانی (شکن، ۴۰۳، بگذر، الکترو، رادار و…) را بر اساس موفقیت و سرعت رتبه‌بندی می‌کند و نشان می‌دهد کدام‌یک واقعاً Docker Hub را باز می‌کند.</span></p></div>
+      <div class="card"><div class="icon">📦</div><h3><span class="cmd">netdoctor mirrors --write</span></h3>
+        <p><span lang="en">Checks 37 PyPI, npm, Docker, Go and Maven mirrors by verifying their content, then writes pip.conf, .npmrc, daemon.json and GOPROXY, showing the diff first.</span><span lang="fa">۳۷ میرور PyPI، npm، Docker، Go و Maven را با بررسی محتوای واقعی آزمایش می‌کند. بعد pip.conf، .npmrc، daemon.json و GOPROXY را می‌نویسد و قبلش تغییرات را نشان می‌دهد.</span></p></div>
+      <div class="card"><div class="icon">↩️</div><h3><span class="cmd">netdoctor restore</span></h3>
+        <p><span lang="en">Every write is backed up automatically. One command puts every file back exactly as it was.</span><span lang="fa">از هر تغییری خودکار پشتیبان گرفته می‌شود. با یک دستور همه‌چیز دقیقاً به حالت قبل برمی‌گردد.</span></p></div>
+      <div class="card"><div class="icon">📝</div><h3><span class="cmd">netdoctor report --md</span></h3>
+        <p><span lang="en">A shareable Markdown or JSON report you can paste into an issue or a team chat. It doesn't include your IP address.</span><span lang="fa">گزارش Markdown یا JSON که می‌توانید در issue یا گروه تیمی بگذارید. IP شما در آن نیست.</span></p></div>
+      <div class="card"><div class="icon">📊</div><h3><span class="cmd">netdoctor tui</span></h3>
+        <p><span lang="en">An optional live dashboard built with Textual, with auto-refresh and rescan on a single key.</span><span lang="fa">داشبورد زندهٔ اختیاری با Textual؛ به‌روزرسانی خودکار و اسکن دوباره با یک کلید.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="background:var(--bg2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <h2><span lang="en">How it works</span><span lang="fa">چطور کار می‌کند</span></h2>
+    <p class="sub"><span lang="en">Each service goes through four probes. netdoctor stops at the first failure and classifies what it saw using fingerprints from an open YAML catalog.</span><span lang="fa">هر سرویس از چهار مرحله می‌گذرد. netdoctor در اولین خطا می‌ایستد و آنچه دیده را با امضاهای یک فهرست باز YAML دسته‌بندی می‌کند.</span></p>
+    <div class="steps">
+      <div class="step"><b>DNS</b><span lang="en">dnspython, with any resolver. Answers in 10.10.34.0/24 mean a filtering redirect.</span><span lang="fa">dnspython با هر DNS دلخواه. پاسخ در بازهٔ 10.10.34.0/24 یعنی هدایت فیلترینگ.</span></div>
+      <div class="step"><b>TCP</b><span lang="en">Connect latency. A timeout often means the IP is blackholed.</span><span lang="fa">زمان اتصال. timeout یعنی احتمالاً IP مسدود است.</span></div>
+      <div class="step"><b>TLS</b><span lang="en">A verified handshake with SNI. A reset after a working TCP connect is the classic sign of SNI filtering.</span><span lang="fa">دست‌دهی تأییدشده با SNI. قطع اتصال بعد از TCP موفق، نشانهٔ کلاسیک فیلترینگ SNI است.</span></div>
+      <div class="step"><b>HTTP</b><span lang="en">Sent to the resolved IP with the original Host header. Sanction pages and block pages are matched by their signatures.</span><span lang="fa">درخواست به همان IP با Host اصلی. صفحه‌های تحریم و مسدودسازی با امضایشان شناسایی می‌شوند.</span></div>
+    </div>
+    <div style="height:28px"></div>
+    <table>
+      <thead><tr><th><span lang="en">Verdict</span><span lang="fa">حکم</span></th><th><span lang="en">What netdoctor saw</span><span lang="fa">آنچه netdoctor دید</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="v ok">● OK</span> / <span class="v warn">▲ SLOW</span></td><td><span lang="en">Expected status code (a Cloudflare bot challenge counts as reachable).</span><span lang="fa">کد وضعیت مورد انتظار (چالش ضدربات Cloudflare هم «در دسترس» حساب می‌شود).</span></td></tr>
+        <tr><td><span class="v mag">⊘ SANCTIONED</span></td><td><span lang="en">HTTP 403/451 with a known sanction page: Docker export control, Google "your client does not have permission", OpenAI unsupported country, Cloudflare 1009, CloudFront geo-block…</span><span lang="fa">HTTP 403/451 همراه با صفحهٔ تحریم شناخته‌شده: export control داکر، پیام «your client does not have permission» گوگل، کشور پشتیبانی‌نشدهٔ OpenAI، خطای 1009 کلودفلر، geo-block کلادفرانت و…</span></td></tr>
+        <tr><td><span class="v bad">✖ FILTERED</span></td><td><span lang="en">DNS hijack, TLS reset or stall after TCP connect, certificate interception, or a block page / redirect to peyvandha.ir.</span><span lang="fa">دستکاری DNS، قطع یا گیر کردن TLS بعد از TCP، رهگیری گواهی، یا صفحهٔ مسدودسازی و هدایت به peyvandha.ir.</span></td></tr>
+        <tr><td><span class="v warn">⊘ FORBIDDEN</span></td><td><span lang="en">403 without a known marker, probably a geo-block. Please contribute the signature!</span><span lang="fa">۴۰۳ بدون امضای شناخته‌شده، احتمالاً geo-block. امضایش را به پروژه اضافه کنید!</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="start">
+  <div class="wrap two">
+    <div>
+      <h2><span lang="en">Quick start</span><span lang="fa">شروع سریع</span></h2>
+      <p class="sub"><span lang="en">Python 3.10+ on Linux, macOS or Windows. netdoctor isn't on PyPI yet, so install it from GitHub.</span><span lang="fa">پایتون ۳٫۱۰ به بالا روی لینوکس، مک یا ویندوز. فعلاً روی PyPI نیست و از گیت‌هاب نصب می‌شود.</span></p>
+<pre><span class="c"># install</span>
+pipx install git+https://github.com/mrzroot/netdoctor-ir.git
+
+<span class="c"># diagnose</span>
+netdoctor scan
+netdoctor scan --resolver shecan
+netdoctor dns --deep
+
+<span class="c"># switch mirrors (diff + backup), then undo</span>
+netdoctor mirrors --write --dry-run
+netdoctor mirrors --write
+netdoctor restore</pre>
+    </div>
+    <div>
+      <h2><span lang="en">Safe by design</span><span lang="fa">امن از پایه</span></h2>
+      <div class="grid" style="grid-template-columns:1fr">
+        <div class="card"><h3><span lang="en">Never touches system settings</span><span lang="fa">تنظیمات سیستم را تغییر نمی‌دهد</span></h3><p><span lang="en"><code>dns --apply</code> prints the commands for your OS (and <code>--script</code> saves them). You review them and run them yourself.</span><span lang="fa"><code>dns --apply</code> فقط دستورهای سیستم‌عامل شما را چاپ می‌کند (و <code>--script</code> ذخیره‌شان می‌کند). خودتان بررسی و اجرا می‌کنید.</span></p></div>
+        <div class="card"><h3><span lang="en">No root, no telemetry</span><span lang="fa">بدون root و بدون تله‌متری</span></h3><p><span lang="en">On Linux, the Docker config is staged in your home directory along with the <code>sudo cp</code> command. Traffic only goes to the catalog's own endpoints.</span><span lang="fa">روی لینوکس، تنظیمات داکر در پوشهٔ خانه آماده می‌شود و دستور <code>sudo cp</code> هم کنارش چاپ می‌شود. ترافیک فقط به آدرس‌های داخل فهرست می‌رود.</span></p></div>
+        <div class="card"><h3><span lang="en">Honest catalog</span><span lang="fa">فهرست صادقانه</span></h3><p><span lang="en">Every mirror and resolver is labelled <em>official</em>, <em>documented</em> or <em>community-reported</em>, with a source link.</span><span lang="fa">هر میرور و DNS برچسب <em>official</em>، <em>documented</em> یا <em>community-reported</em> و لینک منبع دارد.</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="shots" style="background:var(--bg2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <h2><span lang="en">Real output</span><span lang="fa">خروجی واقعی</span></h2>
+    <p class="sub"><span lang="en">Captured with <code>scripts/make_screenshots.py</code> on the build server outside Iran. Iranian resolvers only answer inside Iran, and many Iranian mirrors refuse foreign clients, so run it yourself to see your real picture.</span><span lang="fa">با <code>scripts/make_screenshots.py</code> روی سرور خارج از ایران گرفته شده. DNSهای ایرانی فقط داخل ایران پاسخ می‌دهند و بسیاری از میرورهای ایرانی کاربر خارجی را نمی‌پذیرند. برای دیدن وضعیت واقعی، خودتان اجرا کنید.</span></p>
+    <div class="shots">
+      <figure class="term"><img src="img/dns.svg" alt="netdoctor dns --deep output" loading="lazy"></figure>
+      <figure class="term"><img src="img/mirrors.svg" alt="netdoctor mirrors output" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2><span lang="en">FAQ</span><span lang="fa">پرسش‌های پرتکرار</span></h2>
+    <details><summary><span lang="en">Does netdoctor bypass filtering or sanctions?</span><span lang="fa">آیا netdoctor فیلترینگ یا تحریم را دور می‌زند؟</span></summary>
+      <p><span lang="en">No. It's a diagnostic tool: it measures reachability and, if you ask, points your package managers at public mirrors and prints DNS settings. It isn't a VPN or a proxy.</span><span lang="fa">خیر. ابزاری تشخیصی است: دسترسی را اندازه می‌گیرد و در صورت درخواست شما، ابزارهای مدیریت بسته را روی میرورهای عمومی تنظیم می‌کند و تنظیمات DNS را چاپ می‌کند. VPN یا پروکسی نیست.</span></p></details>
+    <details><summary><span lang="en">How do I add a mirror or a resolver?</span><span lang="fa">چطور میرور یا DNS جدید اضافه کنم؟</span></summary>
+      <p><span lang="en">Edit <code>netdoctor/data/mirrors.yaml</code> or <code>resolvers.yaml</code>, run <code>netdoctor catalog validate</code>, and open a PR with a source link. Output from inside Iran is the best evidence.</span><span lang="fa">فایل <code>netdoctor/data/mirrors.yaml</code> یا <code>resolvers.yaml</code> را ویرایش کنید، <code>netdoctor catalog validate</code> را اجرا کنید و یک PR با لینک منبع بفرستید. خروجی گرفته‌شده از داخل ایران بهترین مدرک است.</span></p></details>
+    <details><summary><span lang="en">Is a community-reported mirror safe?</span><span lang="fa">آیا میرورهای community-reported امن‌اند؟</span></summary>
+      <p><span lang="en">It means nobody has confirmed the entry from inside Iran yet. Any mirror can see what you download, so prefer official and documented entries and verify hashes or lockfiles.</span><span lang="fa">یعنی هنوز کسی آن را از داخل ایران تأیید نکرده. هر میروری می‌بیند چه چیزی دانلود می‌کنید؛ موارد official و documented را ترجیح دهید و hash یا lockfile را بررسی کنید.</span></p></details>
+    <details><summary><span lang="en">Does this page load in Iran?</span><span lang="fa">این صفحه در ایران باز می‌شود؟</span></summary>
+      <p><span lang="en">This page makes no third-party requests: no Google Fonts, no CDNs, no analytics. Everything is served from GitHub Pages.</span><span lang="fa">این صفحه هیچ درخواستی به سرویس‌های دیگر نمی‌فرستد: نه Google Fonts، نه CDN، نه آمارگیر. همه‌چیز از GitHub Pages می‌آید.</span></p></details>
+    <div class="note" style="margin-top:24px">
+      <span lang="en"><strong>Disclaimer.</strong> netdoctor-ir is an independent diagnostic tool. It respects the law and doesn't bypass any filtering or sanction mechanism by itself. It measures connectivity and helps you configure mirrors and DNS resolvers that you choose. Third-party services listed in the catalog aren't endorsed.</span>
+      <span lang="fa"><strong>سلب مسئولیت.</strong> netdoctor-ir ابزاری مستقل و تشخیصی است. به قانون احترام می‌گذارد و خودش هیچ فیلترینگ یا تحریمی را دور نمی‌زند. فقط اتصال را می‌سنجد و به تنظیم میرورها و DNSهایی که خودتان انتخاب می‌کنید کمک می‌کند. معرفی سرویس‌های دیگر در فهرست به معنای تأیید آن‌ها نیست.</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>MIT © 2026 <a href="https://github.com/mrzroot">Mohammadreza Zare</a> · <span lang="en">Built in Mashhad</span><span lang="fa">ساخته‌شده در مشهد</span></span>
+    <span><a href="https://github.com/mrzroot/netdoctor-ir">GitHub</a> · <a href="https://github.com/mrzroot/netdoctor-ir/blob/main/CHANGELOG.md">Changelog</a> · <a href="https://github.com/mrzroot/netdoctor-ir/blob/main/CONTRIBUTING.md"><span lang="en">Contribute</span><span lang="fa">مشارکت</span></a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function setLang(l){
+    root.setAttribute('data-lang',l); root.lang=l; root.dir=(l==='fa'?'rtl':'ltr');
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed', String(b.dataset.setLang===l));});
+    try{localStorage.setItem('nd-lang',l);}catch(e){}
+  }
+  var saved=null; try{saved=localStorage.getItem('nd-lang');}catch(e){}
+  var q=new URLSearchParams(location.search).get('lang');
+  setLang(q==='fa'||q==='en'?q:(saved||((navigator.language||'').toLowerCase().indexOf('fa')===0?'fa':'en')));
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.setLang);});});
+  document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+    var t=document.getElementById(b.dataset.copy).textContent;
+    (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.classList.add('done');setTimeout(function(){b.classList.remove('done');},1200);}).catch(function(){});
+  });});
+})();
+</script>
+</body>
+</html>

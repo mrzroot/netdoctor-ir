@@ -1,0 +1,92 @@
+# Fingerprints used to explain *why* a request failed.
+#
+# kind: sanction  -> the service itself refuses Iranian clients (US export controls etc.)
+#       block     -> the request was intercepted by a national filtering system
+#       challenge -> a bot-protection page (e.g. Cloudflare "Just a moment..."); the
+#                    service IS reachable, it just wants a real browser
+# patterns are matched case-insensitively against the first 64 KiB of the response
+# body, the Location header and the Server header. If `statuses` is given the HTTP
+# status must also match.
+schema: 1
+signatures:
+  - id: docker-export-control
+    name: Docker Hub export-control block
+    kind: sanction
+    patterns:
+      - "Since Docker is a US company, we must comply with US export control regulations"
+      - "docker.com/legal/export-control"
+  - id: google-403
+    name: Google "your client does not have permission"
+    kind: sanction
+    statuses: [403]
+    patterns:
+      - "your client does not have permission to get url"
+      - "403. that’s an error"
+      - "403. that's an error"
+      - "we're sorry, but you do not have access to this service"
+  - id: openai-unsupported-country
+    name: OpenAI unsupported country
+    kind: sanction
+    statuses: [403]
+    patterns:
+      - "unsupported_country_region_territory"
+      - "country, region, or territory not supported"
+  - id: cloudflare-1009
+    name: Cloudflare country ban (error 1009)
+    kind: sanction
+    statuses: [403]
+    patterns:
+      - "error 1009"
+      - "has banned the country or region your ip address is in"
+  - id: cloudfront-geo
+    name: Amazon CloudFront geo-restriction
+    kind: sanction
+    statuses: [403]
+    patterns:
+      - "configured to block access from your country"
+  - id: gitlab-embargo
+    name: GitLab embargoed country
+    kind: sanction
+    statuses: [403]
+    patterns:
+      - "embargoed country"
+      - "gitlab.com is not available in your country"
+  - id: generic-sanction
+    name: Generic geo/sanction block
+    kind: sanction
+    statuses: [403, 451]
+    patterns:
+      - "not available in your country"
+      - "not available in your region"
+      - "export control"
+      - "sanctioned countr"
+      - "embargoed"
+      - "restricted territor"
+  - id: bot-challenge
+    name: Bot-protection challenge
+    kind: challenge
+    statuses: [403, 429, 503]
+    patterns:
+      - "challenge-platform"
+      - "<title>just a moment...</title>"
+      - "cf-mitigated"
+  - id: iran-peyvandha
+    name: Iranian filtering page (peyvandha)
+    kind: block
+    patterns:
+      - "peyvandha.ir"
+      - "10.10.34.34"
+      - "10.10.34.35"
+      - "10.10.34.36"
+# IPs a censoring resolver returns instead of the real address.
+block_ranges:
+  - cidr: 10.10.34.0/24
+    description: Iranian national filtering redirect (10.10.34.34-36)
+  - cidr: 0.0.0.0/32
+    description: Null route answer
+  - cidr: 127.0.0.0/8
+    description: Loopback answer for a public domain
+# Hostnames that indicate a block page when they appear in a redirect.
+block_hosts:
+  - peyvandha.ir
+  - internet.ir

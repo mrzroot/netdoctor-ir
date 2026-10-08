@@ -1,0 +1,278 @@
+# Package / registry mirrors tested by `netdoctor mirrors`.
+#
+# ecosystem:     pypi | npm | docker | go | maven
+#   pypi   -> url is a PEP 503 "simple" index root  (…/simple)
+#   npm    -> url is an npm registry root
+#   docker -> url is a registry mirror root (must answer /v2/)
+#   go     -> url is a GOPROXY root
+#   maven  -> url is a Maven repository root
+# verification:  official | documented | community-reported
+#   "documented" = the operator's own page/docs list this exact endpoint.
+#   "community-reported" = taken from community lists only; nobody has confirmed it from
+#   inside Iran yet. Many Iranian mirrors refuse foreign clients, so maintainers outside
+#   Iran cannot verify them. Open a PR with evidence to upgrade an entry.
+# source:        where the entry came from.
+#
+# Sources used for the initial catalog (Oct 2026):
+#   - https://github.com/MiravaOrg/Mirava  (curated list of Iranian mirrors)
+#   - https://mirrors.arash-hatami.ir/     (open-source mirror directory)
+#   - operators' own pages where linked below
+schema: 1
+mirrors:
+  # ---------------------------------------------------------------- PyPI
+  - id: pypi-official
+    name: PyPI (upstream)
+    provider: Python Software Foundation
+    ecosystem: pypi
+    url: https://pypi.org/simple
+    country: global
+    verification: official
+  - id: pypi-liara
+    name: Liara PyPI
+    provider: Liara
+    ecosystem: pypi
+    url: https://package-mirror.liara.ir/repository/pypi/simple
+    verification: documented
+    source: https://liara.ir/mirrors/pypi/
+  - id: pypi-runflare
+    name: Runflare PyPI
+    provider: Runflare
+    ecosystem: pypi
+    url: https://mirror-pypi.runflare.com/simple
+    verification: documented
+    source: https://docs.runflare.com/mirror/pypi-mirror/
+    note: Operator advertises a free per-IP request quota.
+  - id: pypi-chabokan
+    name: Chabokan PyPI
+    provider: Chabokan
+    ecosystem: pypi
+    url: https://mirror2.chabokan.net/registry/pypi/simple
+    source: https://mirrors.arash-hatami.ir/
+  - id: pypi-kargadan
+    name: Kargadan PyPI
+    provider: Kargadan
+    ecosystem: pypi
+    url: https://mirror.kargadan.ir/repository/pypi-group/simple
+    verification: documented
+    source: https://mirror.kargadan.ir/
+  - id: pypi-litebase
+    name: Litebase PyPI
+    provider: Litebase
+    ecosystem: pypi
+    url: https://mirror.litebase.ir/repository/pypi/simple
+    source: https://mirrors.arash-hatami.ir/
+  - id: pypi-devneeds
+    name: DevNeeds PyPI
+    provider: DevNeeds
+    ecosystem: pypi
+    url: https://pypi.devneeds.ir/simple
+    source: https://mirrors.arash-hatami.ir/
+  - id: pypi-tuna
+    name: TUNA (Tsinghua) PyPI
+    provider: Tsinghua University
+    ecosystem: pypi
+    url: https://pypi.tuna.tsinghua.edu.cn/simple
+    country: CN
+    verification: documented
+    source: https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
+  # ---------------------------------------------------------------- npm
+  - id: npm-official
+    name: npm (upstream)
+    provider: npm, Inc.
+    ecosystem: npm
+    url: https://registry.npmjs.org
+    country: global
+    verification: official
+  - id: npm-liara
+    name: Liara npm
+    provider: Liara
+    ecosystem: npm
+    url: https://package-mirror.liara.ir/repository/npm
+    verification: documented
+    source: https://liara.ir/mirrors/npm/
+  - id: npm-runflare
+    name: Runflare npm
+    provider: Runflare
+    ecosystem: npm
+    url: https://mirror-npm.runflare.com
+    verification: documented
+    source: https://docs.runflare.com/mirror/npm-mirror/
+  - id: npm-chabokan
+    name: Chabokan npm
+    provider: Chabokan
+    ecosystem: npm
+    url: https://mirror2.chabokan.net/registry/npm
+    source: https://mirrors.arash-hatami.ir/
+  - id: npm-kargadan
+    name: Kargadan npm
+    provider: Kargadan
+    ecosystem: npm
+    url: https://mirror.kargadan.ir/repository/npm-group
+    verification: documented
+    source: https://mirror.kargadan.ir/
+  - id: npm-litebase
+    name: Litebase npm
+    provider: Litebase
+    ecosystem: npm
+    url: https://mirror.litebase.ir/repository/npm
+    source: https://mirrors.arash-hatami.ir/
+  - id: npm-devneeds
+    name: DevNeeds npm
+    provider: DevNeeds
+    ecosystem: npm
+    url: https://npm.devneeds.ir
+    source: https://mirrors.arash-hatami.ir/
+  - id: npm-npmmirror
+    name: npmmirror
+    provider: npmmirror.com
+    ecosystem: npm
+    url: https://registry.npmmirror.com
+    country: CN
+    verification: documented
+    source: https://npmmirror.com/
+  # ---------------------------------------------------------------- Docker
+  - id: docker-official
+    name: Docker Hub (upstream)
+    provider: Docker, Inc.
+    ecosystem: docker
+    url: https://registry-1.docker.io
+    country: global
+    verification: official
+    note: Geo-blocks Iranian IPs (US export controls).
+  - id: docker-arvancloud
+    name: ArvanCloud registry mirror
+    provider: ArvanCloud
+    ecosystem: docker
+    url: https://docker.arvancloud.ir
+    source: https://www.arvancloud.ir/fa/dev/docker
+  - id: docker-liara
+    name: Liara registry mirror
+    provider: Liara
+    ecosystem: docker
+    url: https://docker-mirror.liara.ir
+    verification: documented
+    source: https://liara.ir/mirrors/docker/
+  - id: docker-runflare
+    name: Runflare registry mirror
+    provider: Runflare
+    ecosystem: docker
+    url: https://mirror-docker.runflare.com
+    verification: documented
+    source: https://docs.runflare.com/mirror/mirror-docker/
+  - id: docker-hamdocker
+    name: HamDocker
+    provider: Hamravesh
+    ecosystem: docker
+    url: https://hub.hamdocker.ir
+    source: https://github.com/MiravaOrg/Mirava
+  - id: docker-mobinhost
+    name: MobinHost registry mirror
+    provider: MobinHost
+    ecosystem: docker
+    url: https://docker.mobinhost.com
+    source: https://github.com/MiravaOrg/Mirava
+  - id: docker-focker
+    name: Focker
+    provider: Focker
+    ecosystem: docker
+    url: https://focker.ir
+    source: https://github.com/MiravaOrg/Mirava
+  - id: docker-devneeds
+    name: DevNeeds registry mirror
+    provider: DevNeeds
+    ecosystem: docker
+    url: https://docker.devneeds.ir
+    source: https://mirrors.arash-hatami.ir/
+  - id: docker-kargadan
+    name: Kargadan registry mirror
+    provider: Kargadan
+    ecosystem: docker
+    url: https://docker-mirror.kargadan.ir
+    verification: documented
+    source: https://mirror.kargadan.ir/
+  # ---------------------------------------------------------------- Go
+  - id: go-official
+    name: proxy.golang.org (upstream)
+    provider: Google
+    ecosystem: go
+    url: https://proxy.golang.org
+    country: global
+    verification: official
+    note: Google infrastructure; often 403 for Iranian IPs.
+  - id: go-liara
+    name: Liara GOPROXY
+    provider: Liara
+    ecosystem: go
+    url: https://package-mirror.liara.ir/repository/go
+    verification: documented
+    source: https://liara.ir/mirrors/go/
+  - id: go-runflare
+    name: Runflare GOPROXY
+    provider: Runflare
+    ecosystem: go
+    url: https://mirror-go.runflare.com
+    verification: documented
+    source: https://docs.runflare.com/mirror/go-mirror/
+  - id: go-kargadan
+    name: Kargadan GOPROXY
+    provider: Kargadan
+    ecosystem: go
+    url: https://mirror.kargadan.ir/repository/go-group
+    verification: documented
+    source: https://mirror.kargadan.ir/
+  - id: go-litebase
+    name: Litebase GOPROXY
+    provider: Litebase
+    ecosystem: go
+    url: https://mirror.litebase.ir/repository/go
+    source: https://mirrors.arash-hatami.ir/
+  - id: go-goproxy-io
+    name: goproxy.io
+    provider: goproxy.io
+    ecosystem: go
+    url: https://goproxy.io
+    country: global
+    verification: documented
+    source: https://goproxy.io/
+  - id: go-goproxy-cn
+    name: goproxy.cn
+    provider: Qiniu
+    ecosystem: go
+    url: https://goproxy.cn
+    country: CN
+    verification: documented
+    source: https://goproxy.cn/
+  # ---------------------------------------------------------------- Maven
+  - id: maven-official
+    name: Maven Central (upstream)
+    provider: Sonatype
+    ecosystem: maven
+    url: https://repo1.maven.org/maven2
+    country: global
+    verification: official
+  - id: maven-myket
+    name: Myket Maven
+    provider: Myket
+    ecosystem: maven
+    url: https://maven.myket.ir
+    source: https://github.com/MiravaOrg/Mirava
+  - id: maven-runflare
+    name: Runflare Maven
+    provider: Runflare
+    ecosystem: maven
+    url: https://mirror-maven.runflare.com/maven2
+    verification: documented
+    source: https://docs.runflare.com/mirror/mirror-maven/
+  - id: maven-devneeds
+    name: DevNeeds Maven
+    provider: DevNeeds
+    ecosystem: maven
+    url: https://maven.devneeds.ir
+    source: https://mirrors.arash-hatami.ir/
+  - id: maven-kargadan
+    name: Kargadan Maven
+    provider: Kargadan
+    ecosystem: maven
+    url: https://mirror.kargadan.ir/repository/maven-central-group
+    verification: documented
+    source: https://mirror.kargadan.ir/

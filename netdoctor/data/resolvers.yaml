@@ -1,0 +1,116 @@
+# DNS resolvers benchmarked by `netdoctor dns`.
+#
+# kind:          public | anti-sanction | isp
+# iran_only:     true if the resolver only answers clients on Iranian networks
+#                (it will time out everywhere else — that is expected).
+# verification:  official | documented | community-reported
+#                "documented" = the operator lists these addresses on its own website.
+#                "community-reported" = collected from third-party lists; please help verify.
+#
+# Please include a source link in your PR when you add or change an entry.
+schema: 1
+resolvers:
+  # ---- Iranian anti-sanction resolvers ---------------------------------------
+  - id: shecan
+    name: Shecan (free)
+    name_fa: شکن
+    kind: anti-sanction
+    addresses: [178.22.122.100, 185.51.200.2]
+    doh: https://free.shecan.ir/dns-query
+    website: https://shecan.ir
+    iran_only: true
+    verification: community-reported
+  - id: 403-online
+    name: 403.online
+    name_fa: ۴۰۳ آنلاین
+    kind: anti-sanction
+    addresses: [10.202.10.202, 10.202.10.102]
+    doh: https://dns.403.online/dns-query
+    website: https://403.online
+    iran_only: true
+    verification: community-reported
+    note: Private 10.x addresses — reachable only from inside Iranian networks.
+  - id: begzar
+    name: Begzar
+    name_fa: بگذر
+    kind: anti-sanction
+    addresses: [185.55.226.26, 185.55.225.25, 185.55.224.24]
+    website: https://begzar.ir
+    iran_only: true
+    verification: documented
+  - id: electro
+    name: Electro
+    name_fa: الکترو
+    kind: anti-sanction
+    addresses: [78.157.42.100, 78.157.42.101]
+    website: https://electrotm.org
+    iran_only: true
+    verification: community-reported
+  - id: radar-game
+    name: Radar Game
+    name_fa: رادار گیم
+    kind: anti-sanction
+    addresses: [10.202.10.10, 10.202.10.11]
+    website: https://radar.game
+    iran_only: true
+    verification: community-reported
+    note: Gaming-oriented; private 10.x addresses.
+  - id: iranserver
+    name: IranServer
+    name_fa: ایران سرور
+    kind: anti-sanction
+    addresses: [172.29.2.100, 172.29.0.100]
+    website: https://www.iranserver.com
+    iran_only: true
+    verification: community-reported
+  # ---- ISP resolvers ----------------------------------------------------------
+  - id: shatel
+    name: Shatel
+    name_fa: شاتل
+    kind: isp
+    addresses: [85.15.1.14, 85.15.1.15]
+    website: https://shatel.ir
+    iran_only: true
+    verification: community-reported
+    note: Intended for Shatel subscribers.
+  # ---- Public resolvers -------------------------------------------------------
+  - id: cloudflare
+    name: Cloudflare
+    kind: public
+    addresses: [1.1.1.1, 1.0.0.1]
+    doh: https://cloudflare-dns.com/dns-query
+    website: https://one.one.one.one
+    verification: official
+  - id: google
+    name: Google Public DNS
+    kind: public
+    addresses: [8.8.8.8, 8.8.4.4]
+    doh: https://dns.google/dns-query
+    website: https://developers.google.com/speed/public-dns
+    verification: official
+  - id: quad9
+    name: Quad9
+    kind: public
+    addresses: [9.9.9.9, 149.112.112.112]
+    doh: https://dns.quad9.net/dns-query
+    website: https://quad9.net
+    verification: official
+  - id: opendns
+    name: OpenDNS
+    kind: public
+    addresses: [208.67.222.222, 208.67.220.220]
+    website: https://www.opendns.com
+    verification: official
+  - id: adguard
+    name: AdGuard DNS
+    kind: public
+    addresses: [94.140.14.14, 94.140.15.15]
+    doh: https://dns.adguard-dns.com/dns-query
+    website: https://adguard-dns.io
+    verification: official
+  - id: controld
+    name: Control D (unfiltered)
+    kind: public
+    addresses: [76.76.2.0, 76.76.10.0]
+    website: https://controld.com
+    verification: official

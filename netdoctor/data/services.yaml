@@ -1,0 +1,234 @@
+# Developer services probed by `netdoctor scan`.
+#
+# Fields:
+#   id              unique, kebab-case
+#   name            display name
+#   category        python | javascript | containers | go | git | google | java | linux | other
+#   host            hostname to resolve and connect to
+#   path            HTTP path to request (default "/")
+#   expect          list of HTTP status codes that mean "healthy" (default: 200-399)
+#   sanction_prone  true if the service is known to geo-block Iranian IPs
+#   note            short hint shown in reports
+#
+# Pick a lightweight path: netdoctor reads at most 64 KiB of the body.
+schema: 1
+services:
+  - id: pypi
+    name: PyPI (index)
+    category: python
+    host: pypi.org
+    path: /simple/pip/
+  - id: pythonhosted
+    name: PyPI files
+    category: python
+    host: files.pythonhosted.org
+    path: /
+    expect: [200, 301, 302, 403, 404]
+    note: Package downloads are served from this CDN host.
+  - id: npm
+    name: npm registry
+    category: javascript
+    host: registry.npmjs.org
+    path: /-/ping
+  - id: yarn
+    name: Yarn registry
+    category: javascript
+    host: registry.yarnpkg.com
+    path: /-/ping
+  - id: jsdelivr
+    name: jsDelivr CDN
+    category: javascript
+    host: cdn.jsdelivr.net
+    path: /npm/jquery@3.7.1/package.json
+  - id: docker-registry
+    name: Docker Hub registry
+    category: containers
+    host: registry-1.docker.io
+    path: /v2/
+    expect: [200, 401]
+    sanction_prone: true
+    note: "401 is normal here: the registry asks for a token."
+  - id: docker-auth
+    name: Docker Hub auth
+    category: containers
+    host: auth.docker.io
+    path: /token?service=registry.docker.io&scope=repository:library/alpine:pull
+    sanction_prone: true
+  - id: docker-hub
+    name: Docker Hub website
+    category: containers
+    host: hub.docker.com
+    path: /
+    sanction_prone: true
+  - id: ghcr
+    name: GitHub Container Registry
+    category: containers
+    host: ghcr.io
+    path: /v2/
+    expect: [200, 401, 405]
+  - id: quay
+    name: Quay.io
+    category: containers
+    host: quay.io
+    path: /v2/
+    expect: [200, 401]
+  - id: k8s-registry
+    name: Kubernetes registry
+    category: containers
+    host: registry.k8s.io
+    path: /v2/
+    expect: [200, 301, 302, 307, 401]
+    sanction_prone: true
+  - id: goproxy
+    name: Go module proxy
+    category: go
+    host: proxy.golang.org
+    path: /golang.org/x/text/@v/list
+    sanction_prone: true
+  - id: gosum
+    name: Go checksum DB
+    category: go
+    host: sum.golang.org
+    path: /latest
+    sanction_prone: true
+  - id: go-dev
+    name: go.dev
+    category: go
+    host: go.dev
+    path: /
+    sanction_prone: true
+  - id: github
+    name: GitHub
+    category: git
+    host: github.com
+    path: /
+  - id: github-api
+    name: GitHub API
+    category: git
+    host: api.github.com
+    path: /zen
+  - id: github-raw
+    name: GitHub raw content
+    category: git
+    host: raw.githubusercontent.com
+    path: /github/gitignore/main/Python.gitignore
+  - id: github-objects
+    name: GitHub release downloads
+    category: git
+    host: objects.githubusercontent.com
+    path: /
+    expect: [200, 301, 302, 400, 403, 404]
+  - id: gitlab
+    name: GitLab.com
+    category: git
+    host: gitlab.com
+    path: /api/v4/version
+    expect: [200, 401]
+    sanction_prone: true
+  - id: google-fonts
+    name: Google Fonts CSS
+    category: google
+    host: fonts.googleapis.com
+    path: /css2?family=Inter
+    sanction_prone: true
+  - id: google-fonts-static
+    name: Google Fonts files
+    category: google
+    host: fonts.gstatic.com
+    path: /
+    expect: [200, 301, 302, 404]
+    sanction_prone: true
+  - id: google-maven
+    name: Google Maven (Android)
+    category: java
+    host: dl.google.com
+    path: /dl/android/maven2/index.html
+    sanction_prone: true
+  - id: android-dev
+    name: Android Developers
+    category: google
+    host: developer.android.com
+    path: /
+    sanction_prone: true
+  - id: firebase
+    name: Firebase console
+    category: google
+    host: firebase.google.com
+    path: /
+    sanction_prone: true
+  - id: maven-central
+    name: Maven Central
+    category: java
+    host: repo1.maven.org
+    path: /maven2/
+  - id: gradle
+    name: Gradle distributions
+    category: java
+    host: services.gradle.org
+    path: /distributions/
+  - id: ubuntu-archive
+    name: Ubuntu archive (apt)
+    category: linux
+    host: archive.ubuntu.com
+    path: /ubuntu/
+    scheme: http
+    port: 80
+  - id: debian
+    name: Debian (apt)
+    category: linux
+    host: deb.debian.org
+    path: /debian/
+  - id: alpine
+    name: Alpine packages
+    category: linux
+    host: dl-cdn.alpinelinux.org
+    path: /alpine/
+  - id: crates
+    name: crates.io index
+    category: other
+    host: index.crates.io
+    path: /config.json
+  - id: rubygems
+    name: RubyGems
+    category: other
+    host: rubygems.org
+    path: /api/v1/versions/rails/latest.json
+  - id: packagist
+    name: Packagist (Composer)
+    category: other
+    host: repo.packagist.org
+    path: /packages.json
+  - id: nuget
+    name: NuGet
+    category: other
+    host: api.nuget.org
+    path: /v3/index.json
+  - id: pub-dev
+    name: pub.dev (Dart/Flutter)
+    category: other
+    host: pub.dev
+    path: /api/packages/http
+    sanction_prone: true
+  - id: huggingface
+    name: Hugging Face
+    category: other
+    host: huggingface.co
+    path: /api/models?limit=1
+  - id: openai-api
+    name: OpenAI API
+    category: other
+    host: api.openai.com
+    path: /v1/models
+    expect: [200, 401]
+    sanction_prone: true
+    note: "401 without an API key is normal; 403 'unsupported_country' is the sanction."
+  - id: vscode-marketplace
+    name: VS Code Marketplace
+    category: other
+    host: marketplace.visualstudio.com
+    path: /
+  - id: stackoverflow
+    name: Stack Overflow
+    category: other
+    host: stackoverflow.com
+    path: /

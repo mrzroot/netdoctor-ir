@@ -1,0 +1,2945 @@
+{
+  "tool": "netdoctor-ir",
+  "version": "0.1.0",
+  "generated_at": "2026-10-08T10:10:13+00:00",
+  "platform": {
+    "system": "Linux",
+    "release": "6.12.94+",
+    "python": "3.12.15"
+  },
+  "resolver": "system",
+  "scan": {
+    "summary": {
+      "total": 38,
+      "counts": {
+        "ok": 38
+      },
+      "headline": "Healthy \u2014 all 38 developer services are reachable.",
+      "level": "good",
+      "advice": [
+        "Your resolver returns fake-IP answers (198.18.0.0/15): a local proxy/VPN is intercepting DNS, so these results describe that proxy's path."
+      ]
+    },
+    "results": [
+      {
+        "service": {
+          "id": "pypi",
+          "name": "PyPI (index)",
+          "category": "python",
+          "host": "pypi.org",
+          "path": "/simple/pip/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://pypi.org/simple/pip/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 6.1,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 7.8,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 130.9,
+          "error": null,
+          "detail": "TLSv1.3 GlobalSign nv-sa"
+        },
+        "http": {
+          "ok": true,
+          "ms": 126.1,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 270.9
+      },
+      {
+        "service": {
+          "id": "pythonhosted",
+          "name": "PyPI files",
+          "category": "python",
+          "host": "files.pythonhosted.org",
+          "path": "/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [
+            200,
+            301,
+            302,
+            403,
+            404
+          ],
+          "sanction_prone": false,
+          "note": "Package downloads are served from this CDN host.",
+          "url": "https://files.pythonhosted.org/"
+        },
+        "verdict": "ok",
+        "reason": "Package downloads are served from this CDN host.",
+        "ips": [
+          "151.101.192.223",
+          "151.101.0.223",
+          "151.101.64.223",
+          "151.101.128.223"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 12.5,
+          "error": null,
+          "detail": "151.101.192.223, 151.101.0.223, 151.101.64.223, 151.101.128.223"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 9.3,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 84.9,
+          "error": null,
+          "detail": "TLSv1.3 GlobalSign nv-sa"
+        },
+        "http": {
+          "ok": true,
+          "ms": 126.5,
+          "error": null,
+          "detail": "HTTP 404"
+        },
+        "status": 404,
+        "signature": null,
+        "total_ms": 233.2
+      },
+      {
+        "service": {
+          "id": "npm",
+          "name": "npm registry",
+          "category": "javascript",
+          "host": "registry.npmjs.org",
+          "path": "/-/ping",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://registry.npmjs.org/-/ping"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "104.16.2.34",
+          "104.16.8.34",
+          "104.16.0.34",
+          "104.16.4.34",
+          "104.16.1.34",
+          "104.16.5.34",
+          "104.16.10.34",
+          "104.16.3.34",
+          "104.16.11.34",
+          "104.16.7.34",
+          "104.16.6.34",
+          "104.16.9.34"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 9.5,
+          "error": null,
+          "detail": "104.16.2.34, 104.16.8.34, 104.16.0.34, 104.16.4.34, 104.16.1.34, 104.16.5.34, 104.16.10.34, 104.16.3.34, 104.16.11.34, 104.16.7.34, 104.16.6.34, 104.16.9.34"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 9.3,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 95.1,
+          "error": null,
+          "detail": "TLSv1.2 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 149.6,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 263.5
+      },
+      {
+        "service": {
+          "id": "yarn",
+          "name": "Yarn registry",
+          "category": "javascript",
+          "host": "registry.yarnpkg.com",
+          "path": "/-/ping",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://registry.yarnpkg.com/-/ping"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 5.3,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 9.0,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 170.3,
+          "error": null,
+          "detail": "TLSv1.2 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 138.0,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 322.6
+      },
+      {
+        "service": {
+          "id": "jsdelivr",
+          "name": "jsDelivr CDN",
+          "category": "javascript",
+          "host": "cdn.jsdelivr.net",
+          "path": "/npm/jquery@3.7.1/package.json",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://cdn.jsdelivr.net/npm/jquery@3.7.1/package.json"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 5.7,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 9.0,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 136.1,
+          "error": null,
+          "detail": "TLSv1.3 GlobalSign nv-sa"
+        },
+        "http": {
+          "ok": true,
+          "ms": 121.9,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 272.7
+      },
+      {
+        "service": {
+          "id": "docker-registry",
+          "name": "Docker Hub registry",
+          "category": "containers",
+          "host": "registry-1.docker.io",
+          "path": "/v2/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [
+            200,
+            401
+          ],
+          "sanction_prone": true,
+          "note": "401 is normal here: the registry asks for a token.",
+          "url": "https://registry-1.docker.io/v2/"
+        },
+        "verdict": "ok",
+        "reason": "401 is normal here: the registry asks for a token.",
+        "ips": [
+          "54.205.194.59",
+          "184.195.20.173",
+          "52.205.246.4",
+          "98.90.98.171",
+          "52.86.134.208",
+          "44.196.55.242",
+          "184.73.73.8",
+          "44.212.230.82"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 7.6,
+          "error": null,
+          "detail": "54.205.194.59, 184.195.20.173, 52.205.246.4, 98.90.98.171, 52.86.134.208, 44.196.55.242, 184.73.73.8, 44.212.230.82"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 8.8,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 173.6,
+          "error": null,
+          "detail": "TLSv1.3 Amazon"
+        },
+        "http": {
+          "ok": true,
+          "ms": 252.2,
+          "error": null,
+          "detail": "HTTP 401"
+        },
+        "status": 401,
+        "signature": null,
+        "total_ms": 442.2
+      },
+      {
+        "service": {
+          "id": "docker-auth",
+          "name": "Docker Hub auth",
+          "category": "containers",
+          "host": "auth.docker.io",
+          "path": "/token?service=registry.docker.io&scope=repository:library/alpine:pull",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": true,
+          "note": "",
+          "url": "https://auth.docker.io/token?service=registry.docker.io&scope=repository:library/alpine:pull"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "172.64.144.78",
+          "104.18.43.178"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 10.0,
+          "error": null,
+          "detail": "172.64.144.78, 104.18.43.178"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 9.5,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 29.3,
+          "error": null,
+          "detail": "TLSv1.3 Let's Encrypt"
+        },
+        "http": {
+          "ok": true,
+          "ms": 247.3,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 296.1
+      },
+      {
+        "service": {
+          "id": "docker-hub",
+          "name": "Docker Hub website",
+          "category": "containers",
+          "host": "hub.docker.com",
+          "path": "/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": true,
+          "note": "",
+          "url": "https://hub.docker.com/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "104.18.43.187",
+          "172.64.144.69"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 10.8,
+          "error": null,
+          "detail": "104.18.43.187, 172.64.144.69"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 9.4,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 78.4,
+          "error": null,
+          "detail": "TLSv1.3 Let's Encrypt"
+        },
+        "http": {
+          "ok": true,
+          "ms": 242.1,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 340.7
+      },
+      {
+        "service": {
+          "id": "ghcr",
+          "name": "GitHub Container Registry",
+          "category": "containers",
+          "host": "ghcr.io",
+          "path": "/v2/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [
+            200,
+            401,
+            405
+          ],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://ghcr.io/v2/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "20.29.134.18"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 8.8,
+          "error": null,
+          "detail": "20.29.134.18"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 9.8,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 111.5,
+          "error": null,
+          "detail": "TLSv1.3 Sectigo Limited"
+        },
+        "http": {
+          "ok": true,
+          "ms": 207.6,
+          "error": null,
+          "detail": "HTTP 401"
+        },
+        "status": 401,
+        "signature": null,
+        "total_ms": 337.7
+      },
+      {
+        "service": {
+          "id": "quay",
+          "name": "Quay.io",
+          "category": "containers",
+          "host": "quay.io",
+          "path": "/v2/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [
+            200,
+            401
+          ],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://quay.io/v2/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 5.4,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 8.9,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 194.8,
+          "error": null,
+          "detail": "TLSv1.3 Amazon"
+        },
+        "http": {
+          "ok": true,
+          "ms": 335.9,
+          "error": null,
+          "detail": "HTTP 401"
+        },
+        "status": 401,
+        "signature": null,
+        "total_ms": 545.0
+      },
+      {
+        "service": {
+          "id": "k8s-registry",
+          "name": "Kubernetes registry",
+          "category": "containers",
+          "host": "registry.k8s.io",
+          "path": "/v2/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [
+            200,
+            301,
+            302,
+            307,
+            401
+          ],
+          "sanction_prone": true,
+          "note": "",
+          "url": "https://registry.k8s.io/v2/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 4.9,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 8.9,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 180.8,
+          "error": null,
+          "detail": "TLSv1.3 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 194.7,
+          "error": null,
+          "detail": "HTTP 401"
+        },
+        "status": 401,
+        "signature": null,
+        "total_ms": 389.3
+      },
+      {
+        "service": {
+          "id": "goproxy",
+          "name": "Go module proxy",
+          "category": "go",
+          "host": "proxy.golang.org",
+          "path": "/golang.org/x/text/@v/list",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": true,
+          "note": "",
+          "url": "https://proxy.golang.org/golang.org/x/text/@v/list"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "192.178.163.141"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 9.5,
+          "error": null,
+          "detail": "192.178.163.141"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 9.5,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 117.4,
+          "error": null,
+          "detail": "TLSv1.3 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 129.3,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 265.7
+      },
+      {
+        "service": {
+          "id": "gosum",
+          "name": "Go checksum DB",
+          "category": "go",
+          "host": "sum.golang.org",
+          "path": "/latest",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": true,
+          "note": "",
+          "url": "https://sum.golang.org/latest"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 5.7,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 9.0,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 161.9,
+          "error": null,
+          "detail": "TLSv1.3 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 275.4,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 452.0
+      },
+      {
+        "service": {
+          "id": "go-dev",
+          "name": "go.dev",
+          "category": "go",
+          "host": "go.dev",
+          "path": "/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": true,
+          "note": "",
+          "url": "https://go.dev/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 5.1,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 9.0,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 230.2,
+          "error": null,
+          "detail": "TLSv1.3 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 373.6,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 617.9
+      },
+      {
+        "service": {
+          "id": "github",
+          "name": "GitHub",
+          "category": "git",
+          "host": "github.com",
+          "path": "/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://github.com/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 6.3,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 8.9,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 148.0,
+          "error": null,
+          "detail": "TLSv1.3 Sectigo Limited"
+        },
+        "http": {
+          "ok": true,
+          "ms": 140.5,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 303.7
+      },
+      {
+        "service": {
+          "id": "github-api",
+          "name": "GitHub API",
+          "category": "git",
+          "host": "api.github.com",
+          "path": "/zen",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://api.github.com/zen"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 6.4,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 9.3,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 140.3,
+          "error": null,
+          "detail": "TLSv1.3 Sectigo Limited"
+        },
+        "http": {
+          "ok": true,
+          "ms": 207.4,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 363.4
+      },
+      {
+        "service": {
+          "id": "github-raw",
+          "name": "GitHub raw content",
+          "category": "git",
+          "host": "raw.githubusercontent.com",
+          "path": "/github/gitignore/main/Python.gitignore",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 1.4,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 0.3,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 44.7,
+          "error": null,
+          "detail": "TLSv1.3 Let's Encrypt"
+        },
+        "http": {
+          "ok": true,
+          "ms": 182.7,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 229.1
+      },
+      {
+        "service": {
+          "id": "github-objects",
+          "name": "GitHub release downloads",
+          "category": "git",
+          "host": "objects.githubusercontent.com",
+          "path": "/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [
+            200,
+            301,
+            302,
+            400,
+            403,
+            404
+          ],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://objects.githubusercontent.com/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "185.199.109.133",
+          "185.199.110.133",
+          "185.199.111.133",
+          "185.199.108.133"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 7.2,
+          "error": null,
+          "detail": "185.199.109.133, 185.199.110.133, 185.199.111.133, 185.199.108.133"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 1.9,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 22.9,
+          "error": null,
+          "detail": "TLSv1.3 Let's Encrypt"
+        },
+        "http": {
+          "ok": true,
+          "ms": 50.5,
+          "error": null,
+          "detail": "HTTP 404"
+        },
+        "status": 404,
+        "signature": null,
+        "total_ms": 82.5
+      },
+      {
+        "service": {
+          "id": "gitlab",
+          "name": "GitLab.com",
+          "category": "git",
+          "host": "gitlab.com",
+          "path": "/api/v4/version",
+          "port": 443,
+          "scheme": "https",
+          "expect": [
+            200,
+            401
+          ],
+          "sanction_prone": true,
+          "note": "",
+          "url": "https://gitlab.com/api/v4/version"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 2.8,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 2.8,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 52.9,
+          "error": null,
+          "detail": "TLSv1.3 Sectigo Limited"
+        },
+        "http": {
+          "ok": true,
+          "ms": 224.9,
+          "error": null,
+          "detail": "HTTP 401"
+        },
+        "status": 401,
+        "signature": null,
+        "total_ms": 283.4
+      },
+      {
+        "service": {
+          "id": "google-fonts",
+          "name": "Google Fonts CSS",
+          "category": "google",
+          "host": "fonts.googleapis.com",
+          "path": "/css2?family=Inter",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": true,
+          "note": "",
+          "url": "https://fonts.googleapis.com/css2?family=Inter"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 3.4,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 2.1,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 124.7,
+          "error": null,
+          "detail": "TLSv1.3 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 254.0,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 384.2
+      },
+      {
+        "service": {
+          "id": "google-fonts-static",
+          "name": "Google Fonts files",
+          "category": "google",
+          "host": "fonts.gstatic.com",
+          "path": "/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [
+            200,
+            301,
+            302,
+            404
+          ],
+          "sanction_prone": true,
+          "note": "",
+          "url": "https://fonts.gstatic.com/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 3.7,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 19.1,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 137.1,
+          "error": null,
+          "detail": "TLSv1.3 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 216.4,
+          "error": null,
+          "detail": "HTTP 404"
+        },
+        "status": 404,
+        "signature": null,
+        "total_ms": 376.3
+      },
+      {
+        "service": {
+          "id": "google-maven",
+          "name": "Google Maven (Android)",
+          "category": "java",
+          "host": "dl.google.com",
+          "path": "/dl/android/maven2/index.html",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": true,
+          "note": "",
+          "url": "https://dl.google.com/dl/android/maven2/index.html"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "142.250.107.91",
+          "142.250.107.93",
+          "142.250.107.136",
+          "142.250.107.190"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 3.4,
+          "error": null,
+          "detail": "142.250.107.91, 142.250.107.93, 142.250.107.136, 142.250.107.190"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 0.5,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 32.5,
+          "error": null,
+          "detail": "TLSv1.3 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 104.9,
+          "error": null,
+          "detail": "HTTP 302"
+        },
+        "status": 302,
+        "signature": null,
+        "total_ms": 141.3
+      },
+      {
+        "service": {
+          "id": "android-dev",
+          "name": "Android Developers",
+          "category": "google",
+          "host": "developer.android.com",
+          "path": "/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": true,
+          "note": "",
+          "url": "https://developer.android.com/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 0.9,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 0.3,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 126.1,
+          "error": null,
+          "detail": "TLSv1.3 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 1238.2,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 1365.5
+      },
+      {
+        "service": {
+          "id": "firebase",
+          "name": "Firebase console",
+          "category": "google",
+          "host": "firebase.google.com",
+          "path": "/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": true,
+          "note": "",
+          "url": "https://firebase.google.com/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 1.0,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 0.3,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 131.5,
+          "error": null,
+          "detail": "TLSv1.3 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 471.2,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 604.0
+      },
+      {
+        "service": {
+          "id": "maven-central",
+          "name": "Maven Central",
+          "category": "java",
+          "host": "repo1.maven.org",
+          "path": "/maven2/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://repo1.maven.org/maven2/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "104.18.19.12",
+          "104.18.18.12"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 12.2,
+          "error": null,
+          "detail": "104.18.19.12, 104.18.18.12"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 4.0,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 18.9,
+          "error": null,
+          "detail": "TLSv1.3 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 107.4,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 142.5
+      },
+      {
+        "service": {
+          "id": "gradle",
+          "name": "Gradle distributions",
+          "category": "java",
+          "host": "services.gradle.org",
+          "path": "/distributions/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://services.gradle.org/distributions/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "104.16.73.101",
+          "104.16.72.101"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 13.3,
+          "error": null,
+          "detail": "104.16.73.101, 104.16.72.101"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 1.8,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 25.7,
+          "error": null,
+          "detail": "TLSv1.2 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 116.0,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 156.8
+      },
+      {
+        "service": {
+          "id": "ubuntu-archive",
+          "name": "Ubuntu archive (apt)",
+          "category": "linux",
+          "host": "archive.ubuntu.com",
+          "path": "/ubuntu/",
+          "port": 80,
+          "scheme": "http",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "http://archive.ubuntu.com/ubuntu/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "91.189.92.22",
+          "91.189.91.83",
+          "91.189.92.23",
+          "91.189.91.81",
+          "185.125.190.82",
+          "185.125.190.83",
+          "185.125.190.81",
+          "91.189.91.82",
+          "91.189.92.24"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 4.0,
+          "error": null,
+          "detail": "91.189.92.22, 91.189.91.83, 91.189.92.23, 91.189.91.81, 185.125.190.82, 185.125.190.83, 185.125.190.81, 91.189.91.82, 91.189.92.24"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 1.3,
+          "error": null,
+          "detail": ""
+        },
+        "tls": null,
+        "http": {
+          "ok": true,
+          "ms": 334.1,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 339.4
+      },
+      {
+        "service": {
+          "id": "debian",
+          "name": "Debian (apt)",
+          "category": "linux",
+          "host": "deb.debian.org",
+          "path": "/debian/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://deb.debian.org/debian/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "151.101.22.132"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 4.8,
+          "error": null,
+          "detail": "151.101.22.132"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 0.3,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 38.0,
+          "error": null,
+          "detail": "TLSv1.3 Let's Encrypt"
+        },
+        "http": {
+          "ok": true,
+          "ms": 230.5,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 273.6
+      },
+      {
+        "service": {
+          "id": "alpine",
+          "name": "Alpine packages",
+          "category": "linux",
+          "host": "dl-cdn.alpinelinux.org",
+          "path": "/alpine/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://dl-cdn.alpinelinux.org/alpine/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 2.1,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 0.6,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 67.5,
+          "error": null,
+          "detail": "TLSv1.3 Let's Encrypt"
+        },
+        "http": {
+          "ok": true,
+          "ms": 306.4,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 376.6
+      },
+      {
+        "service": {
+          "id": "crates",
+          "name": "crates.io index",
+          "category": "other",
+          "host": "index.crates.io",
+          "path": "/config.json",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://index.crates.io/config.json"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 19.2,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 4.7,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 87.0,
+          "error": null,
+          "detail": "TLSv1.3 GlobalSign nv-sa"
+        },
+        "http": {
+          "ok": true,
+          "ms": 136.3,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 247.2
+      },
+      {
+        "service": {
+          "id": "rubygems",
+          "name": "RubyGems",
+          "category": "other",
+          "host": "rubygems.org",
+          "path": "/api/v1/versions/rails/latest.json",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://rubygems.org/api/v1/versions/rails/latest.json"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 5.8,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 4.3,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 45.5,
+          "error": null,
+          "detail": "TLSv1.3 GlobalSign nv-sa"
+        },
+        "http": {
+          "ok": true,
+          "ms": 98.8,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 154.4
+      },
+      {
+        "service": {
+          "id": "packagist",
+          "name": "Packagist (Composer)",
+          "category": "other",
+          "host": "repo.packagist.org",
+          "path": "/packages.json",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://repo.packagist.org/packages.json"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 5.8,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 4.6,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 123.1,
+          "error": null,
+          "detail": "TLSv1.3 Let's Encrypt"
+        },
+        "http": {
+          "ok": true,
+          "ms": 160.2,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 293.7
+      },
+      {
+        "service": {
+          "id": "nuget",
+          "name": "NuGet",
+          "category": "other",
+          "host": "api.nuget.org",
+          "path": "/v3/index.json",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://api.nuget.org/v3/index.json"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 4.9,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 4.3,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 56.9,
+          "error": null,
+          "detail": "TLSv1.3 Microsoft Corporation"
+        },
+        "http": {
+          "ok": true,
+          "ms": 105.0,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 171.1
+      },
+      {
+        "service": {
+          "id": "pub-dev",
+          "name": "pub.dev (Dart/Flutter)",
+          "category": "other",
+          "host": "pub.dev",
+          "path": "/api/packages/http",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": true,
+          "note": "",
+          "url": "https://pub.dev/api/packages/http"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 1.0,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 0.4,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 142.9,
+          "error": null,
+          "detail": "TLSv1.3 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 169.3,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 313.6
+      },
+      {
+        "service": {
+          "id": "huggingface",
+          "name": "Hugging Face",
+          "category": "other",
+          "host": "huggingface.co",
+          "path": "/api/models?limit=1",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://huggingface.co/api/models?limit=1"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 1.6,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 0.5,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 78.2,
+          "error": null,
+          "detail": "TLSv1.3 Amazon"
+        },
+        "http": {
+          "ok": true,
+          "ms": 188.3,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 268.6
+      },
+      {
+        "service": {
+          "id": "openai-api",
+          "name": "OpenAI API",
+          "category": "other",
+          "host": "api.openai.com",
+          "path": "/v1/models",
+          "port": 443,
+          "scheme": "https",
+          "expect": [
+            200,
+            401
+          ],
+          "sanction_prone": true,
+          "note": "401 without an API key is normal; 403 'unsupported_country' is the sanction.",
+          "url": "https://api.openai.com/v1/models"
+        },
+        "verdict": "ok",
+        "reason": "401 without an API key is normal; 403 'unsupported_country' is the sanction.",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 1.5,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 0.2,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 63.4,
+          "error": null,
+          "detail": "TLSv1.3 Google Trust Services"
+        },
+        "http": {
+          "ok": true,
+          "ms": 183.6,
+          "error": null,
+          "detail": "HTTP 401"
+        },
+        "status": 401,
+        "signature": null,
+        "total_ms": 248.7
+      },
+      {
+        "service": {
+          "id": "vscode-marketplace",
+          "name": "VS Code Marketplace",
+          "category": "other",
+          "host": "marketplace.visualstudio.com",
+          "path": "/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://marketplace.visualstudio.com/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 1.1,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 0.3,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 100.4,
+          "error": null,
+          "detail": "TLSv1.3 Microsoft Corporation"
+        },
+        "http": {
+          "ok": true,
+          "ms": 172.8,
+          "error": null,
+          "detail": "HTTP 200"
+        },
+        "status": 200,
+        "signature": null,
+        "total_ms": 274.6
+      },
+      {
+        "service": {
+          "id": "stackoverflow",
+          "name": "Stack Overflow",
+          "category": "other",
+          "host": "stackoverflow.com",
+          "path": "/",
+          "port": 443,
+          "scheme": "https",
+          "expect": [],
+          "sanction_prone": false,
+          "note": "",
+          "url": "https://stackoverflow.com/"
+        },
+        "verdict": "ok",
+        "reason": "",
+        "ips": [
+          "198.18.0.1"
+        ],
+        "dns": {
+          "ok": true,
+          "ms": 4.7,
+          "error": null,
+          "detail": "198.18.0.1"
+        },
+        "tcp": {
+          "ok": true,
+          "ms": 0.7,
+          "error": null,
+          "detail": ""
+        },
+        "tls": {
+          "ok": true,
+          "ms": 58.4,
+          "error": null,
+          "detail": "TLSv1.3 Let's Encrypt"
+        },
+        "http": {
+          "ok": true,
+          "ms": 118.5,
+          "error": null,
+          "detail": "HTTP 302"
+        },
+        "status": 302,
+        "signature": null,
+        "total_ms": 182.3
+      }
+    ]
+  },
+  "dns": [
+    {
+      "resolver": {
+        "id": "cloudflare",
+        "name": "Cloudflare",
+        "kind": "public",
+        "addresses": [
+          "1.1.1.1",
+          "1.0.0.1"
+        ],
+        "website": "https://one.one.one.one",
+        "name_fa": "",
+        "doh": "https://cloudflare-dns.com/dns-query",
+        "iran_only": false,
+        "verification": "official",
+        "note": ""
+      },
+      "queries": 24,
+      "answered": 24,
+      "timeouts": 0,
+      "errors": 0,
+      "hijacked": 0,
+      "differs": 2,
+      "unlocks": null,
+      "unlock_total": null,
+      "best_address": "1.0.0.1",
+      "success_rate": 1.0,
+      "median_ms": 7.6,
+      "p95_ms": 9.2,
+      "score": 99.6,
+      "rank": 1,
+      "note": "2 rewritten/CDN-differing answer(s)"
+    },
+    {
+      "resolver": {
+        "id": "google",
+        "name": "Google Public DNS",
+        "kind": "public",
+        "addresses": [
+          "8.8.8.8",
+          "8.8.4.4"
+        ],
+        "website": "https://developers.google.com/speed/public-dns",
+        "name_fa": "",
+        "doh": "https://dns.google/dns-query",
+        "iran_only": false,
+        "verification": "official",
+        "note": ""
+      },
+      "queries": 24,
+      "answered": 24,
+      "timeouts": 0,
+      "errors": 0,
+      "hijacked": 0,
+      "differs": 4,
+      "unlocks": null,
+      "unlock_total": null,
+      "best_address": "8.8.4.4",
+      "success_rate": 1.0,
+      "median_ms": 12.6,
+      "p95_ms": 26.5,
+      "score": 99.4,
+      "rank": 2,
+      "note": "4 rewritten/CDN-differing answer(s)"
+    },
+    {
+      "resolver": {
+        "id": "403-online",
+        "name": "403.online",
+        "kind": "anti-sanction",
+        "addresses": [
+          "10.202.10.202",
+          "10.202.10.102"
+        ],
+        "website": "https://403.online",
+        "name_fa": "\u06f4\u06f0\u06f3 \u0622\u0646\u0644\u0627\u06cc\u0646",
+        "doh": "https://dns.403.online/dns-query",
+        "iran_only": true,
+        "verification": "community-reported",
+        "note": "Private 10.x addresses \u2014 reachable only from inside Iranian networks."
+      },
+      "queries": 24,
+      "answered": 0,
+      "timeouts": 24,
+      "errors": 0,
+      "hijacked": 0,
+      "differs": 0,
+      "unlocks": null,
+      "unlock_total": null,
+      "best_address": null,
+      "success_rate": 0.0,
+      "median_ms": null,
+      "p95_ms": null,
+      "score": 0.0,
+      "rank": 3,
+      "note": "No answers \u2014 this resolver only serves Iranian networks."
+    },
+    {
+      "resolver": {
+        "id": "adguard",
+        "name": "AdGuard DNS",
+        "kind": "public",
+        "addresses": [
+          "94.140.14.14",
+          "94.140.15.15"
+        ],
+        "website": "https://adguard-dns.io",
+        "name_fa": "",
+        "doh": "https://dns.adguard-dns.com/dns-query",
+        "iran_only": false,
+        "verification": "official",
+        "note": ""
+      },
+      "queries": 24,
+      "answered": 0,
+      "timeouts": 24,
+      "errors": 0,
+      "hijacked": 0,
+      "differs": 0,
+      "unlocks": null,
+      "unlock_total": null,
+      "best_address": null,
+      "success_rate": 0.0,
+      "median_ms": null,
+      "p95_ms": null,
+      "score": 0.0,
+      "rank": 4,
+      "note": "No answers \u2014 unreachable from this network."
+    },
+    {
+      "resolver": {
+        "id": "begzar",
+        "name": "Begzar",
+        "kind": "anti-sanction",
+        "addresses": [
+          "185.55.226.26",
+          "185.55.225.25",
+          "185.55.224.24"
+        ],
+        "website": "https://begzar.ir",
+        "name_fa": "\u0628\u06af\u0630\u0631",
+        "doh": "",
+        "iran_only": true,
+        "verification": "documented",
+        "note": ""
+      },
+      "queries": 36,
+      "answered": 0,
+      "timeouts": 36,
+      "errors": 0,
+      "hijacked": 0,
+      "differs": 0,
+      "unlocks": null,
+      "unlock_total": null,
+      "best_address": null,
+      "success_rate": 0.0,
+      "median_ms": null,
+      "p95_ms": null,
+      "score": 0.0,
+      "rank": 5,
+      "note": "No answers \u2014 this resolver only serves Iranian networks."
+    },
+    {
+      "resolver": {
+        "id": "controld",
+        "name": "Control D (unfiltered)",
+        "kind": "public",
+        "addresses": [
+          "76.76.2.0",
+          "76.76.10.0"
+        ],
+        "website": "https://controld.com",
+        "name_fa": "",
+        "doh": "",
+        "iran_only": false,
+        "verification": "official",
+        "note": ""
+      },
+      "queries": 24,
+      "answered": 0,
+      "timeouts": 24,
+      "errors": 0,
+      "hijacked": 0,
+      "differs": 0,
+      "unlocks": null,
+      "unlock_total": null,
+      "best_address": null,
+      "success_rate": 0.0,
+      "median_ms": null,
+      "p95_ms": null,
+      "score": 0.0,
+      "rank": 6,
+      "note": "No answers \u2014 unreachable from this network."
+    },
+    {
+      "resolver": {
+        "id": "electro",
+        "name": "Electro",
+        "kind": "anti-sanction",
+        "addresses": [
+          "78.157.42.100",
+          "78.157.42.101"
+        ],
+        "website": "https://electrotm.org",
+        "name_fa": "\u0627\u0644\u06a9\u062a\u0631\u0648",
+        "doh": "",
+        "iran_only": true,
+        "verification": "community-reported",
+        "note": ""
+      },
+      "queries": 24,
+      "answered": 0,
+      "timeouts": 24,
+      "errors": 0,
+      "hijacked": 0,
+      "differs": 0,
+      "unlocks": null,
+      "unlock_total": null,
+      "best_address": null,
+      "success_rate": 0.0,
+      "median_ms": null,
+      "p95_ms": null,
+      "score": 0.0,
+      "rank": 7,
+      "note": "No answers \u2014 this resolver only serves Iranian networks."
+    },
+    {
+      "resolver": {
+        "id": "iranserver",
+        "name": "IranServer",
+        "kind": "anti-sanction",
+        "addresses": [
+          "172.29.2.100",
+          "172.29.0.100"
+        ],
+        "website": "https://www.iranserver.com",
+        "name_fa": "\u0627\u06cc\u0631\u0627\u0646 \u0633\u0631\u0648\u0631",
+        "doh": "",
+        "iran_only": true,
+        "verification": "community-reported",
+        "note": ""
+      },
+      "queries": 24,
+      "answered": 0,
+      "timeouts": 24,
+      "errors": 0,
+      "hijacked": 0,
+      "differs": 0,
+      "unlocks": null,
+      "unlock_total": null,
+      "best_address": null,
+      "success_rate": 0.0,
+      "median_ms": null,
+      "p95_ms": null,
+      "score": 0.0,
+      "rank": 8,
+      "note": "No answers \u2014 this resolver only serves Iranian networks."
+    },
+    {
+      "resolver": {
+        "id": "opendns",
+        "name": "OpenDNS",
+        "kind": "public",
+        "addresses": [
+          "208.67.222.222",
+          "208.67.220.220"
+        ],
+        "website": "https://www.opendns.com",
+        "name_fa": "",
+        "doh": "",
+        "iran_only": false,
+        "verification": "official",
+        "note": ""
+      },
+      "queries": 24,
+      "answered": 0,
+      "timeouts": 24,
+      "errors": 0,
+      "hijacked": 0,
+      "differs": 0,
+      "unlocks": null,
+      "unlock_total": null,
+      "best_address": null,
+      "success_rate": 0.0,
+      "median_ms": null,
+      "p95_ms": null,
+      "score": 0.0,
+      "rank": 9,
+      "note": "No answers \u2014 unreachable from this network."
+    },
+    {
+      "resolver": {
+        "id": "quad9",
+        "name": "Quad9",
+        "kind": "public",
+        "addresses": [
+          "9.9.9.9",
+          "149.112.112.112"
+        ],
+        "website": "https://quad9.net",
+        "name_fa": "",
+        "doh": "https://dns.quad9.net/dns-query",
+        "iran_only": false,
+        "verification": "official",
+        "note": ""
+      },
+      "queries": 24,
+      "answered": 0,
+      "timeouts": 24,
+      "errors": 0,
+      "hijacked": 0,
+      "differs": 0,
+      "unlocks": null,
+      "unlock_total": null,
+      "best_address": null,
+      "success_rate": 0.0,
+      "median_ms": null,
+      "p95_ms": null,
+      "score": 0.0,
+      "rank": 10,
+      "note": "No answers \u2014 unreachable from this network."
+    },
+    {
+      "resolver": {
+        "id": "radar-game",
+        "name": "Radar Game",
+        "kind": "anti-sanction",
+        "addresses": [
+          "10.202.10.10",
+          "10.202.10.11"
+        ],
+        "website": "https://radar.game",
+        "name_fa": "\u0631\u0627\u062f\u0627\u0631 \u06af\u06cc\u0645",
+        "doh": "",
+        "iran_only": true,
+        "verification": "community-reported",
+        "note": "Gaming-oriented; private 10.x addresses."
+      },
+      "queries": 24,
+      "answered": 0,
+      "timeouts": 24,
+      "errors": 0,
+      "hijacked": 0,
+      "differs": 0,
+      "unlocks": null,
+      "unlock_total": null,
+      "best_address": null,
+      "success_rate": 0.0,
+      "median_ms": null,
+      "p95_ms": null,
+      "score": 0.0,
+      "rank": 11,
+      "note": "No answers \u2014 this resolver only serves Iranian networks."
+    },
+    {
+      "resolver": {
+        "id": "shatel",
+        "name": "Shatel",
+        "kind": "isp",
+        "addresses": [
+          "85.15.1.14",
+          "85.15.1.15"
+        ],
+        "website": "https://shatel.ir",
+        "name_fa": "\u0634\u0627\u062a\u0644",
+        "doh": "",
+        "iran_only": true,
+        "verification": "community-reported",
+        "note": "Intended for Shatel subscribers."
+      },
+      "queries": 24,
+      "answered": 0,
+      "timeouts": 24,
+      "errors": 0,
+      "hijacked": 0,
+      "differs": 0,
+      "unlocks": null,
+      "unlock_total": null,
+      "best_address": null,
+      "success_rate": 0.0,
+      "median_ms": null,
+      "p95_ms": null,
+      "score": 0.0,
+      "rank": 12,
+      "note": "No answers \u2014 this resolver only serves Iranian networks."
+    },
+    {
+      "resolver": {
+        "id": "shecan",
+        "name": "Shecan (free)",
+        "kind": "anti-sanction",
+        "addresses": [
+          "178.22.122.100",
+          "185.51.200.2"
+        ],
+        "website": "https://shecan.ir",
+        "name_fa": "\u0634\u06a9\u0646",
+        "doh": "https://free.shecan.ir/dns-query",
+        "iran_only": true,
+        "verification": "community-reported",
+        "note": ""
+      },
+      "queries": 24,
+      "answered": 0,
+      "timeouts": 24,
+      "errors": 0,
+      "hijacked": 0,
+      "differs": 0,
+      "unlocks": null,
+      "unlock_total": null,
+      "best_address": null,
+      "success_rate": 0.0,
+      "median_ms": null,
+      "p95_ms": null,
+      "score": 0.0,
+      "rank": 13,
+      "note": "No answers \u2014 this resolver only serves Iranian networks."
+    }
+  ],
+  "mirrors": {
+    "results": [
+      {
+        "mirror": {
+          "id": "pypi-official",
+          "name": "PyPI (upstream)",
+          "provider": "Python Software Foundation",
+          "ecosystem": "pypi",
+          "url": "https://pypi.org/simple",
+          "country": "global",
+          "verification": "official",
+          "source": "",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves simple index for 'pip'",
+        "status": 200,
+        "ms": 86.0
+      },
+      {
+        "mirror": {
+          "id": "pypi-liara",
+          "name": "Liara PyPI",
+          "provider": "Liara",
+          "ecosystem": "pypi",
+          "url": "https://package-mirror.liara.ir/repository/pypi/simple",
+          "country": "IR",
+          "verification": "documented",
+          "source": "https://liara.ir/mirrors/pypi/",
+          "note": ""
+        },
+        "verdict": "slow",
+        "reason": "Serves simple index for 'pip', slowly",
+        "status": 200,
+        "ms": 2088.2
+      },
+      {
+        "mirror": {
+          "id": "pypi-runflare",
+          "name": "Runflare PyPI",
+          "provider": "Runflare",
+          "ecosystem": "pypi",
+          "url": "https://mirror-pypi.runflare.com/simple",
+          "country": "IR",
+          "verification": "documented",
+          "source": "https://docs.runflare.com/mirror/pypi-mirror/",
+          "note": "Operator advertises a free per-IP request quota."
+        },
+        "verdict": "timeout",
+        "reason": "ConnectTimeout",
+        "status": null,
+        "ms": 6019.8
+      },
+      {
+        "mirror": {
+          "id": "pypi-chabokan",
+          "name": "Chabokan PyPI",
+          "provider": "Chabokan",
+          "ecosystem": "pypi",
+          "url": "https://mirror2.chabokan.net/registry/pypi/simple",
+          "country": "IR",
+          "verification": "community-reported",
+          "source": "https://mirrors.arash-hatami.ir/",
+          "note": ""
+        },
+        "verdict": "http-error",
+        "reason": "HTTP 404 for simple index for 'pip'",
+        "status": 404,
+        "ms": 2371.4
+      },
+      {
+        "mirror": {
+          "id": "pypi-kargadan",
+          "name": "Kargadan PyPI",
+          "provider": "Kargadan",
+          "ecosystem": "pypi",
+          "url": "https://mirror.kargadan.ir/repository/pypi-group/simple",
+          "country": "IR",
+          "verification": "documented",
+          "source": "https://mirror.kargadan.ir/",
+          "note": ""
+        },
+        "verdict": "timeout",
+        "reason": "ReadTimeout",
+        "status": null,
+        "ms": 7061.0
+      },
+      {
+        "mirror": {
+          "id": "pypi-litebase",
+          "name": "Litebase PyPI",
+          "provider": "Litebase",
+          "ecosystem": "pypi",
+          "url": "https://mirror.litebase.ir/repository/pypi/simple",
+          "country": "IR",
+          "verification": "community-reported",
+          "source": "https://mirrors.arash-hatami.ir/",
+          "note": ""
+        },
+        "verdict": "tcp-error",
+        "reason": "ConnectError",
+        "status": null,
+        "ms": 271.0
+      },
+      {
+        "mirror": {
+          "id": "pypi-devneeds",
+          "name": "DevNeeds PyPI",
+          "provider": "DevNeeds",
+          "ecosystem": "pypi",
+          "url": "https://pypi.devneeds.ir/simple",
+          "country": "IR",
+          "verification": "community-reported",
+          "source": "https://mirrors.arash-hatami.ir/",
+          "note": ""
+        },
+        "verdict": "http-error",
+        "reason": "HTTP 429 for simple index for 'pip'",
+        "status": 429,
+        "ms": 1440.5
+      },
+      {
+        "mirror": {
+          "id": "pypi-tuna",
+          "name": "TUNA (Tsinghua) PyPI",
+          "provider": "Tsinghua University",
+          "ecosystem": "pypi",
+          "url": "https://pypi.tuna.tsinghua.edu.cn/simple",
+          "country": "CN",
+          "verification": "documented",
+          "source": "https://mirrors.tuna.tsinghua.edu.cn/help/pypi/",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves simple index for 'pip'",
+        "status": 200,
+        "ms": 1967.8
+      },
+      {
+        "mirror": {
+          "id": "npm-official",
+          "name": "npm (upstream)",
+          "provider": "npm, Inc.",
+          "ecosystem": "npm",
+          "url": "https://registry.npmjs.org",
+          "country": "global",
+          "verification": "official",
+          "source": "",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves metadata for 'is-number'",
+        "status": 200,
+        "ms": 59.0
+      },
+      {
+        "mirror": {
+          "id": "npm-liara",
+          "name": "Liara npm",
+          "provider": "Liara",
+          "ecosystem": "npm",
+          "url": "https://package-mirror.liara.ir/repository/npm",
+          "country": "IR",
+          "verification": "documented",
+          "source": "https://liara.ir/mirrors/npm/",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves metadata for 'is-number'",
+        "status": 200,
+        "ms": 1204.6
+      },
+      {
+        "mirror": {
+          "id": "npm-runflare",
+          "name": "Runflare npm",
+          "provider": "Runflare",
+          "ecosystem": "npm",
+          "url": "https://mirror-npm.runflare.com",
+          "country": "IR",
+          "verification": "documented",
+          "source": "https://docs.runflare.com/mirror/npm-mirror/",
+          "note": ""
+        },
+        "verdict": "timeout",
+        "reason": "ConnectTimeout",
+        "status": null,
+        "ms": 6017.0
+      },
+      {
+        "mirror": {
+          "id": "npm-chabokan",
+          "name": "Chabokan npm",
+          "provider": "Chabokan",
+          "ecosystem": "npm",
+          "url": "https://mirror2.chabokan.net/registry/npm",
+          "country": "IR",
+          "verification": "community-reported",
+          "source": "https://mirrors.arash-hatami.ir/",
+          "note": ""
+        },
+        "verdict": "http-error",
+        "reason": "HTTP 404 for metadata for 'is-number'",
+        "status": 404,
+        "ms": 1155.3
+      },
+      {
+        "mirror": {
+          "id": "npm-kargadan",
+          "name": "Kargadan npm",
+          "provider": "Kargadan",
+          "ecosystem": "npm",
+          "url": "https://mirror.kargadan.ir/repository/npm-group",
+          "country": "IR",
+          "verification": "documented",
+          "source": "https://mirror.kargadan.ir/",
+          "note": ""
+        },
+        "verdict": "timeout",
+        "reason": "ReadTimeout",
+        "status": null,
+        "ms": 7078.2
+      },
+      {
+        "mirror": {
+          "id": "npm-litebase",
+          "name": "Litebase npm",
+          "provider": "Litebase",
+          "ecosystem": "npm",
+          "url": "https://mirror.litebase.ir/repository/npm",
+          "country": "IR",
+          "verification": "community-reported",
+          "source": "https://mirrors.arash-hatami.ir/",
+          "note": ""
+        },
+        "verdict": "tcp-error",
+        "reason": "ConnectError",
+        "status": null,
+        "ms": 272.6
+      },
+      {
+        "mirror": {
+          "id": "npm-devneeds",
+          "name": "DevNeeds npm",
+          "provider": "DevNeeds",
+          "ecosystem": "npm",
+          "url": "https://npm.devneeds.ir",
+          "country": "IR",
+          "verification": "community-reported",
+          "source": "https://mirrors.arash-hatami.ir/",
+          "note": ""
+        },
+        "verdict": "slow",
+        "reason": "Serves metadata for 'is-number', slowly",
+        "status": 200,
+        "ms": 2066.3
+      },
+      {
+        "mirror": {
+          "id": "npm-npmmirror",
+          "name": "npmmirror",
+          "provider": "npmmirror.com",
+          "ecosystem": "npm",
+          "url": "https://registry.npmmirror.com",
+          "country": "CN",
+          "verification": "documented",
+          "source": "https://npmmirror.com/",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves metadata for 'is-number'",
+        "status": 200,
+        "ms": 708.6
+      },
+      {
+        "mirror": {
+          "id": "docker-official",
+          "name": "Docker Hub (upstream)",
+          "provider": "Docker, Inc.",
+          "ecosystem": "docker",
+          "url": "https://registry-1.docker.io",
+          "country": "global",
+          "verification": "official",
+          "source": "",
+          "note": "Geo-blocks Iranian IPs (US export controls)."
+        },
+        "verdict": "ok",
+        "reason": "Serves registry /v2/ API",
+        "status": 401,
+        "ms": 183.8
+      },
+      {
+        "mirror": {
+          "id": "docker-arvancloud",
+          "name": "ArvanCloud registry mirror",
+          "provider": "ArvanCloud",
+          "ecosystem": "docker",
+          "url": "https://docker.arvancloud.ir",
+          "country": "IR",
+          "verification": "community-reported",
+          "source": "https://www.arvancloud.ir/fa/dev/docker",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves registry /v2/ API",
+        "status": 401,
+        "ms": 1076.8
+      },
+      {
+        "mirror": {
+          "id": "docker-liara",
+          "name": "Liara registry mirror",
+          "provider": "Liara",
+          "ecosystem": "docker",
+          "url": "https://docker-mirror.liara.ir",
+          "country": "IR",
+          "verification": "documented",
+          "source": "https://liara.ir/mirrors/docker/",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves registry /v2/ API",
+        "status": 401,
+        "ms": 1488.7
+      },
+      {
+        "mirror": {
+          "id": "docker-runflare",
+          "name": "Runflare registry mirror",
+          "provider": "Runflare",
+          "ecosystem": "docker",
+          "url": "https://mirror-docker.runflare.com",
+          "country": "IR",
+          "verification": "documented",
+          "source": "https://docs.runflare.com/mirror/mirror-docker/",
+          "note": ""
+        },
+        "verdict": "timeout",
+        "reason": "ConnectTimeout",
+        "status": null,
+        "ms": 6004.3
+      },
+      {
+        "mirror": {
+          "id": "docker-hamdocker",
+          "name": "HamDocker",
+          "provider": "Hamravesh",
+          "ecosystem": "docker",
+          "url": "https://hub.hamdocker.ir",
+          "country": "IR",
+          "verification": "community-reported",
+          "source": "https://github.com/MiravaOrg/Mirava",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves registry /v2/ API",
+        "status": 401,
+        "ms": 1846.3
+      },
+      {
+        "mirror": {
+          "id": "docker-mobinhost",
+          "name": "MobinHost registry mirror",
+          "provider": "MobinHost",
+          "ecosystem": "docker",
+          "url": "https://docker.mobinhost.com",
+          "country": "IR",
+          "verification": "community-reported",
+          "source": "https://github.com/MiravaOrg/Mirava",
+          "note": ""
+        },
+        "verdict": "timeout",
+        "reason": "ConnectTimeout",
+        "status": null,
+        "ms": 6005.7
+      },
+      {
+        "mirror": {
+          "id": "docker-focker",
+          "name": "Focker",
+          "provider": "Focker",
+          "ecosystem": "docker",
+          "url": "https://focker.ir",
+          "country": "IR",
+          "verification": "community-reported",
+          "source": "https://github.com/MiravaOrg/Mirava",
+          "note": ""
+        },
+        "verdict": "timeout",
+        "reason": "ReadTimeout",
+        "status": null,
+        "ms": 6454.8
+      },
+      {
+        "mirror": {
+          "id": "docker-devneeds",
+          "name": "DevNeeds registry mirror",
+          "provider": "DevNeeds",
+          "ecosystem": "docker",
+          "url": "https://docker.devneeds.ir",
+          "country": "IR",
+          "verification": "community-reported",
+          "source": "https://mirrors.arash-hatami.ir/",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves registry /v2/ API",
+        "status": 401,
+        "ms": 913.2
+      },
+      {
+        "mirror": {
+          "id": "docker-kargadan",
+          "name": "Kargadan registry mirror",
+          "provider": "Kargadan",
+          "ecosystem": "docker",
+          "url": "https://docker-mirror.kargadan.ir",
+          "country": "IR",
+          "verification": "documented",
+          "source": "https://mirror.kargadan.ir/",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves registry /v2/ API",
+        "status": 401,
+        "ms": 1422.1
+      },
+      {
+        "mirror": {
+          "id": "go-official",
+          "name": "proxy.golang.org (upstream)",
+          "provider": "Google",
+          "ecosystem": "go",
+          "url": "https://proxy.golang.org",
+          "country": "global",
+          "verification": "official",
+          "source": "",
+          "note": "Google infrastructure; often 403 for Iranian IPs."
+        },
+        "verdict": "ok",
+        "reason": "Serves versions of golang.org/x/text",
+        "status": 200,
+        "ms": 49.9
+      },
+      {
+        "mirror": {
+          "id": "go-liara",
+          "name": "Liara GOPROXY",
+          "provider": "Liara",
+          "ecosystem": "go",
+          "url": "https://package-mirror.liara.ir/repository/go",
+          "country": "IR",
+          "verification": "documented",
+          "source": "https://liara.ir/mirrors/go/",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves versions of golang.org/x/text",
+        "status": 200,
+        "ms": 1301.7
+      },
+      {
+        "mirror": {
+          "id": "go-runflare",
+          "name": "Runflare GOPROXY",
+          "provider": "Runflare",
+          "ecosystem": "go",
+          "url": "https://mirror-go.runflare.com",
+          "country": "IR",
+          "verification": "documented",
+          "source": "https://docs.runflare.com/mirror/go-mirror/",
+          "note": ""
+        },
+        "verdict": "timeout",
+        "reason": "ConnectTimeout",
+        "status": null,
+        "ms": 6003.8
+      },
+      {
+        "mirror": {
+          "id": "go-kargadan",
+          "name": "Kargadan GOPROXY",
+          "provider": "Kargadan",
+          "ecosystem": "go",
+          "url": "https://mirror.kargadan.ir/repository/go-group",
+          "country": "IR",
+          "verification": "documented",
+          "source": "https://mirror.kargadan.ir/",
+          "note": ""
+        },
+        "verdict": "timeout",
+        "reason": "ReadTimeout",
+        "status": null,
+        "ms": 6682.8
+      },
+      {
+        "mirror": {
+          "id": "go-litebase",
+          "name": "Litebase GOPROXY",
+          "provider": "Litebase",
+          "ecosystem": "go",
+          "url": "https://mirror.litebase.ir/repository/go",
+          "country": "IR",
+          "verification": "community-reported",
+          "source": "https://mirrors.arash-hatami.ir/",
+          "note": ""
+        },
+        "verdict": "tcp-error",
+        "reason": "ConnectError",
+        "status": null,
+        "ms": 261.7
+      },
+      {
+        "mirror": {
+          "id": "go-goproxy-io",
+          "name": "goproxy.io",
+          "provider": "goproxy.io",
+          "ecosystem": "go",
+          "url": "https://goproxy.io",
+          "country": "global",
+          "verification": "documented",
+          "source": "https://goproxy.io/",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves versions of golang.org/x/text",
+        "status": 200,
+        "ms": 272.9
+      },
+      {
+        "mirror": {
+          "id": "go-goproxy-cn",
+          "name": "goproxy.cn",
+          "provider": "Qiniu",
+          "ecosystem": "go",
+          "url": "https://goproxy.cn",
+          "country": "CN",
+          "verification": "documented",
+          "source": "https://goproxy.cn/",
+          "note": ""
+        },
+        "verdict": "slow",
+        "reason": "Serves versions of golang.org/x/text, slowly",
+        "status": 200,
+        "ms": 2259.8
+      },
+      {
+        "mirror": {
+          "id": "maven-official",
+          "name": "Maven Central (upstream)",
+          "provider": "Sonatype",
+          "ecosystem": "maven",
+          "url": "https://repo1.maven.org/maven2",
+          "country": "global",
+          "verification": "official",
+          "source": "",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves junit maven-metadata.xml",
+        "status": 200,
+        "ms": 46.0
+      },
+      {
+        "mirror": {
+          "id": "maven-myket",
+          "name": "Myket Maven",
+          "provider": "Myket",
+          "ecosystem": "maven",
+          "url": "https://maven.myket.ir",
+          "country": "IR",
+          "verification": "community-reported",
+          "source": "https://github.com/MiravaOrg/Mirava",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves junit maven-metadata.xml",
+        "status": 200,
+        "ms": 973.9
+      },
+      {
+        "mirror": {
+          "id": "maven-runflare",
+          "name": "Runflare Maven",
+          "provider": "Runflare",
+          "ecosystem": "maven",
+          "url": "https://mirror-maven.runflare.com/maven2",
+          "country": "IR",
+          "verification": "documented",
+          "source": "https://docs.runflare.com/mirror/mirror-maven/",
+          "note": ""
+        },
+        "verdict": "timeout",
+        "reason": "ConnectTimeout",
+        "status": null,
+        "ms": 6004.6
+      },
+      {
+        "mirror": {
+          "id": "maven-devneeds",
+          "name": "DevNeeds Maven",
+          "provider": "DevNeeds",
+          "ecosystem": "maven",
+          "url": "https://maven.devneeds.ir",
+          "country": "IR",
+          "verification": "community-reported",
+          "source": "https://mirrors.arash-hatami.ir/",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves junit maven-metadata.xml",
+        "status": 200,
+        "ms": 1316.4
+      },
+      {
+        "mirror": {
+          "id": "maven-kargadan",
+          "name": "Kargadan Maven",
+          "provider": "Kargadan",
+          "ecosystem": "maven",
+          "url": "https://mirror.kargadan.ir/repository/maven-central-group",
+          "country": "IR",
+          "verification": "documented",
+          "source": "https://mirror.kargadan.ir/",
+          "note": ""
+        },
+        "verdict": "ok",
+        "reason": "Serves junit maven-metadata.xml",
+        "status": 200,
+        "ms": 1379.9
+      }
+    ],
+    "best": {
+      "pypi": "pypi-official",
+      "npm": "npm-official",
+      "docker": "docker-official",
+      "go": "go-official",
+      "maven": "maven-official"
+    }
+  }
+}

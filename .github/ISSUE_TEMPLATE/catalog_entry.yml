@@ -1,0 +1,43 @@
+name: Add or update a mirror / resolver
+description: Suggest a new mirror or DNS resolver, or report one that changed or died
+labels: [catalog]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Type
+      options: [PyPI mirror, npm mirror, Docker registry mirror, Go proxy, Maven mirror, DNS resolver, Sanction/block page signature, Other]
+    validations:
+      required: true
+  - type: dropdown
+    id: action
+    attributes:
+      label: Action
+      options: [Add, Update, Remove (dead)]
+    validations:
+      required: true
+  - type: input
+    id: endpoint
+    attributes:
+      label: URL or IP addresses
+      placeholder: https://mirror.example.ir/simple  or  1.2.3.4, 5.6.7.8
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source / documentation link
+      description: Where the operator documents this endpoint (needed for "documented" trust level).
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence from inside Iran (optional but very helpful)
+      description: Output of `netdoctor mirrors -o <id>` or `netdoctor dns -o <id>`.
+      render: text
+  - type: checkboxes
+    id: policy
+    attributes:
+      label: Policy
+      options:
+        - label: This is a public package mirror or DNS resolver, not a VPN/proxy/tunnel service.
+          required: true

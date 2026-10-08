@@ -1,0 +1,39 @@
+name: Bug report
+description: Something in netdoctor doesn't work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for reporting! Please **remove anything private** from logs before posting.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Command you ran, what you expected, what you got.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output
+      description: Paste the output, or attach `netdoctor report --md -`. Reports do not include your IP.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: netdoctor version
+      placeholder: netdoctor --version
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options: [Linux, macOS, Windows, Other]
+    validations:
+      required: true
+  - type: input
+    id: isp
+    attributes:
+      label: ISP / network type (optional)
+      placeholder: e.g. MCI mobile, Shatel ADSL, office network
