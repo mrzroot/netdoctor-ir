@@ -4,5 +4,7 @@ updates:
     directory: /
     schedule:
       interval: monthly
-  # The github-actions ecosystem is added back when .github/workflows/ci.yml is enabled
-  # (see .github/pending-workflows/README.md).
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

@@ -6,6 +6,7 @@
 Find out in 30 seconds *why* `pip install`, `npm install`, `docker pull` or `go get` is failing:
 DNS hijack, SNI filtering, or a sanction page. Then see which DNS resolver and which package mirror works *today*, and switch to it without losing your old config.
 
+[![CI](https://github.com/mrzroot/netdoctor-ir/actions/workflows/ci.yml/badge.svg)](https://github.com/mrzroot/netdoctor-ir/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python 3.10 | 3.11 | 3.12 | 3.13](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-3776ab.svg)](pyproject.toml)
 

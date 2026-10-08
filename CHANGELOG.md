@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- GitHub Actions CI enabled (moved from `.github/pending-workflows/`); CI badge in README.
+
 ## [0.1.0] - 2026-10-08
 
 First public release.
