@@ -9,6 +9,8 @@ DNS hijack, SNI filtering, or a sanction page. Then see which DNS resolver and w
 [![CI](https://github.com/mrzroot/netdoctor-ir/actions/workflows/ci.yml/badge.svg)](https://github.com/mrzroot/netdoctor-ir/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python 3.10 | 3.11 | 3.12 | 3.13](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-3776ab.svg)](pyproject.toml)
+[![Release](https://img.shields.io/github/v/release/mrzroot/netdoctor-ir?sort=semver)](https://github.com/mrzroot/netdoctor-ir/releases)
+[![Stars](https://img.shields.io/github/stars/mrzroot/netdoctor-ir?style=flat&logo=github)](https://github.com/mrzroot/netdoctor-ir/stargazers)
 
 [Website](https://mrzroot.github.io/netdoctor-ir/) · [Quick start](#quick-start) · [How it works](#how-it-works) · [Contribute a mirror](#contributing-to-the-catalogs) · [FAQ](#faq) · [فارسی](#فارسی)
 
@@ -18,6 +20,13 @@ DNS hijack, SNI filtering, or a sanction page. Then see which DNS resolver and w
 On an Iranian connection you'd see rows such as <code>⊘ SANCTIONED</code> (Docker Hub export-control page) or <code>✖ FILTERED</code> (TLS reset after TCP connect).</sub>
 
 </div>
+
+### ⚡ Quickstart
+
+```bash
+pipx install git+https://github.com/mrzroot/netdoctor-ir.git
+netdoctor scan      # what works, what doesn't, and why
+```
 
 ---
 
