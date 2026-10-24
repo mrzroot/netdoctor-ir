@@ -37,3 +37,6 @@ html[data-theme=light] .crt-roll{display:none}
 .two pre,.two code,.term{max-width:100%;overflow-x:auto}
 .brand{white-space:nowrap}
 @media(max-width:520px){.brand{font-size:1.25em}}
+
+/* QA: keep the "A" (automatic) badge anchored to the theme button */
+html .mrz-tt{position:relative}
