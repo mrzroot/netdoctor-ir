@@ -36,14 +36,14 @@
 .terminal-1660432495-r2 { fill: #d9d9d9 }
 .terminal-1660432495-r3 { fill: #d9d9d9;font-weight: bold }
 .terminal-1660432495-r4 { fill: #5f5f5f }
-.terminal-1660432495-r5 { fill: #58d1eb;font-weight: bold }
+.terminal-1660432495-r5 { fill: #ebb558;font-weight: bold }
 .terminal-1660432495-r6 { fill: #f4005f;font-weight: bold }
 .terminal-1660432495-r7 { fill: #878787 }
 .terminal-1660432495-r8 { fill: #98e024 }
 .terminal-1660432495-r9 { fill: #b2b2b2 }
 .terminal-1660432495-r10 { fill: #f4005f }
 .terminal-1660432495-r11 { fill: #fd971f;font-weight: bold }
-.terminal-1660432495-r12 { fill: #58d1eb }
+.terminal-1660432495-r12 { fill: #ebb558 }
 .terminal-1660432495-r13 { fill: #fd971f }
     </style>
 
