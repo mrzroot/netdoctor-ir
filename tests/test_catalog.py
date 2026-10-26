@@ -1,3 +1,4 @@
+"""The bundled service/mirror catalog: schema validity, every Iranian mirror has a source, lookup helpers and validation errors."""
 import textwrap
 
 import pytest

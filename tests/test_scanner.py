@@ -1,3 +1,4 @@
+"""Per-service scan (DNS, TCP, TLS, HTTP) against fakes, hijack filtering, ordering/concurrency, and the summary verdict."""
 import asyncio
 
 import pytest

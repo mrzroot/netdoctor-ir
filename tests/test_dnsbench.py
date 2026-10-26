@@ -1,3 +1,4 @@
+"""DNS resolver benchmark: reference answers, ranking, and the deep check that unlocks restricted services."""
 from netdoctor.dnsbench import benchmark, explain, rank, reference_answers
 from netdoctor.models import Resolver, ResolverKind, ResolverScore, Verdict
 from netdoctor.net import HttpReply, ProbeError

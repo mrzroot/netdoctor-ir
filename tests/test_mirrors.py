@@ -1,3 +1,4 @@
+"""Mirror checks: probe URLs, per-mirror verdicts, error handling, ordering and progress callbacks."""
 import pytest
 
 from netdoctor.mirrors import best_per_ecosystem, check_mirror, check_mirrors, probe_url

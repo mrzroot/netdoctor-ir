@@ -1,3 +1,4 @@
+"""Saving and loading JSON reports, including partial reports."""
 import json
 
 from netdoctor.models import (

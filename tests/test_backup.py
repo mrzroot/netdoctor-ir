@@ -1,3 +1,4 @@
+"""Backup of config files before changes: create, list, restore, and skipping a corrupt manifest."""
 import pytest
 
 from netdoctor.backup import BackupError, BackupManager, netdoctor_home

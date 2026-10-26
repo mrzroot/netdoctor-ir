@@ -1,3 +1,4 @@
+"""Block detection: blocked and fake/private IPs, bundled block-page signatures, redirects."""
 from netdoctor.detect import (
     blocked_ips,
     explain_error,

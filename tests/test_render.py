@@ -1,3 +1,4 @@
+"""Terminal rendering of scan, DNS and mirror results, full and compact."""
 from rich.console import Console
 
 from netdoctor.models import (

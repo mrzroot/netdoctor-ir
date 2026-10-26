@@ -1,3 +1,4 @@
+"""Config writers for pip, npm, go and docker: ini/kv editing that preserves comments, per-OS paths, planning, apply and restore."""
 import json
 from pathlib import Path
 

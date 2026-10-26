@@ -1,3 +1,4 @@
+"""Data models: service URL/expectation, verdicts, percentiles and resolver score metrics."""
 from netdoctor.models import (
     Mirror,
     Resolver,

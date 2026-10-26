@@ -1,3 +1,4 @@
+"""OS-specific apply instructions and rendered scripts for Linux, macOS and Windows."""
 import pytest
 
 from netdoctor.models import Resolver, ResolverKind
