@@ -133,7 +133,9 @@ html[data-theme=dark] .copy{color:#a3acc8;border-color:#2a3560}
 html[data-theme=light] pre{border:1px solid var(--line)}
 html[data-theme=light] pre .c{color:#5b6383}html[data-theme=dark] pre .c{color:#8a94b6}
 </style>
-<link rel="preload" href="fonts/vt323-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="identity.css"></head>
+<link rel="preload" href="fonts/vt323-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="identity.css"><link rel="stylesheet" href="mx.css">
+<style id="mx-tokens">:root{--mx-acc:var(--accent);--mx-on-acc:var(--bg);--mx-fg:var(--fg);--mx-mut:var(--muted);--mx-card:var(--card);--mx-line:var(--line);--mx-code-bg:var(--code);--mx-code-fg:var(--codefg)}.mx-sec>h2{font-family:VT323,ui-monospace,monospace;font-weight:400;font-size:clamp(32px,4.4vw,50px)}</style>
+</head>
 <body>
 <header class="nav">
   <div class="wrap">
@@ -178,6 +180,9 @@ html[data-theme=light] pre .c{color:#5b6383}html[data-theme=dark] pre .c{color:#
   </div>
 </div>
 
+
+<!-- mx: one-sentence "what is it" -->
+<section class="mx mx-sec mx-one" aria-label="What it is"><span class="mx-kick"><span lang="en">In one sentence</span><span lang="fa">در یک جمله</span></span><p lang="en">netdoctor is <mark>a check-up for your connection</mark>: in about 30 seconds it tells you why pip, npm, docker or go is failing (DNS tampering, filtering or a sanctions page), and which DNS and mirror work today.</p><p lang="fa" dir="rtl">نت‌دکتر <mark>یک معاینهٔ سریع برای اینترنت شماست</mark>: در حدود ۳۰ ثانیه می‌گوید چرا pip، npm، docker یا go کار نمی‌کند (دستکاری DNS، فیلترینگ یا صفحهٔ تحریم) و امروز کدام DNS و کدام آینه جواب می‌دهد.</p></section>
 <section id="features">
   <div class="wrap">
     <h2><span lang="en">Everything you check by hand, in one command</span><span lang="fa">هر چه دستی چک می‌کردید، با یک دستور</span></h2>
@@ -203,7 +208,7 @@ html[data-theme=light] pre .c{color:#5b6383}html[data-theme=dark] pre .c{color:#
   <div class="wrap">
     <h2><span lang="en">How it works</span><span lang="fa">چطور کار می‌کند</span></h2>
     <p class="sub"><span lang="en">Each service goes through four probes. netdoctor stops at the first failure and classifies what it saw using fingerprints from an open YAML catalog.</span><span lang="fa">هر سرویس از چهار مرحله می‌گذرد. netdoctor در اولین خطا می‌ایستد و آنچه دیده را با امضاهای یک فهرست باز YAML دسته‌بندی می‌کند.</span></p>
-    <div class="steps">
+    <div class="mx-steps steps">
       <div class="step"><b>DNS</b><span lang="en">dnspython, with any resolver. Answers in 10.10.34.0/24 mean a filtering redirect.</span><span lang="fa">dnspython با هر DNS دلخواه. پاسخ در بازهٔ 10.10.34.0/24 یعنی هدایت فیلترینگ.</span></div>
       <div class="step"><b>TCP</b><span lang="en">Connect latency. A timeout often means the IP is blackholed.</span><span lang="fa">زمان اتصال. timeout یعنی احتمالاً IP مسدود است.</span></div>
       <div class="step"><b>TLS</b><span lang="en">A verified handshake with SNI. A reset after a working TCP connect is the classic sign of SNI filtering.</span><span lang="fa">دست‌دهی تأییدشده با SNI. قطع اتصال بعد از TCP موفق، نشانهٔ کلاسیک فیلترینگ SNI است.</span></div>
@@ -222,6 +227,9 @@ html[data-theme=light] pre .c{color:#5b6383}html[data-theme=dark] pre .c{color:#
   </div>
 </section>
 
+
+<!-- mx: simulated interactive demo (scripted in the browser, nothing runs on your machine) -->
+<section class="mx mx-sec" id="demo" aria-labelledby="demo-h"><span class="mx-kick"><span lang="en">Try it</span><span lang="fa">امتحان کنید</span></span><h2 id="demo-h"><span lang="en">See how a verdict is reached</span><span lang="fa">ببینید حکم چطور صادر می‌شود</span></h2><p class="mx-sub"><span lang="en">Every service goes through four checks in order. Where it stops tells you what is wrong.</span><span lang="fa">هر سرویس به ترتیب از چهار آزمون می‌گذرد. جایی که متوقف می‌شود نشان می‌دهد مشکل کجاست.</span></p><p class="mx-sim"><span lang="en">Simulation with example results, not a live test of your connection. Run <code>netdoctor scan</code> for real numbers.</span><span lang="fa">شبیه‌سازی با نتیجه‌های نمونه، نه آزمایش زندهٔ اینترنت شما. برای عدد واقعی <code>netdoctor scan</code> را اجرا کنید.</span></p><div class="mx-demo" data-mx><div class="mx-pick" role="group" aria-label="Scenario"></div><div class="mx-dgrid"><div><ol class="mx-track" aria-label="Steps"></ol><p style="margin:14px 0 0"><button type="button" class="mx-run"><span lang="en">▶ Run again</span><span lang="fa">▶ اجرای دوباره</span></button></p></div><pre class="mx-log" tabindex="0" aria-label="Simulated output" aria-live="polite"></pre></div><p class="mx-verdict" aria-live="polite"></p><script type="application/json" class="mx-demo-data">{"prompt": "$", "scenarios": [{"label": {"en": "PyPI: reachable", "fa": "PyPI: در دسترس"}, "cmd": "netdoctor scan --only pypi", "steps": [{"t": {"en": "DNS: ask for pypi.org", "fa": "DNS: پرسیدن آدرس pypi.org"}, "ms": 38, "st": "ok", "log": ["dns   pypi.org → 151.101.0.223  <span class=\"ok\">38 ms<\/span>"]}, {"t": {"en": "TCP: connect to port 443", "fa": "TCP: اتصال به پورت ۴۴۳"}, "ms": 92, "st": "ok", "log": ["tcp   :443 connected  <span class=\"ok\">92 ms<\/span>"]}, {"t": {"en": "TLS: handshake with SNI", "fa": "TLS: دست‌دادن رمزنگاری‌شده (SNI)"}, "ms": 180, "st": "ok", "log": ["tls   certificate valid  <span class=\"ok\">180 ms<\/span>"]}, {"t": {"en": "HTTP: fetch the page", "fa": "HTTP: گرفتن صفحه"}, "ms": 240, "st": "ok", "log": ["http  GET /simple/ → 200  <span class=\"ok\">240 ms<\/span>", "<b>✔ OK<\/b>"]}], "verdict": {"st": "ok", "en": "✔ OK: nothing to fix.", "fa": "✔ OK: مشکلی نیست."}}, {"label": {"en": "Docker Hub: sanction page", "fa": "Docker Hub: صفحهٔ تحریم"}, "cmd": "netdoctor scan --only dockerhub", "steps": [{"t": {"en": "DNS: ask for registry-1.docker.io", "fa": "DNS: پرسیدن registry-1.docker.io"}, "ms": 41, "st": "ok", "log": ["dns   registry-1.docker.io → 3.x.x.x  <span class=\"ok\">41 ms<\/span>"]}, {"t": {"en": "TCP: connect to port 443", "fa": "TCP: اتصال به پورت ۴۴۳"}, "ms": 210, "st": "ok", "log": ["tcp   :443 connected  <span class=\"ok\">210 ms<\/span>"]}, {"t": {"en": "TLS: handshake with SNI", "fa": "TLS: دست‌دادن رمزنگاری‌شده (SNI)"}, "ms": 330, "st": "ok", "log": ["tls   certificate valid"]}, {"t": {"en": "HTTP: read the answer", "fa": "HTTP: خواندن پاسخ"}, "ms": 260, "st": "bad", "log": ["http  GET /v2/ → <span class=\"bad\">403<\/span>  body matches: export-control block", "<b class=\"bad\">⊘ SANCTIONED<\/b>"]}], "verdict": {"st": "bad", "en": "⊘ SANCTIONED: the service refuses Iranian IPs. Try `netdoctor dns --deep` to find a resolver that gets through, or a registry mirror.", "fa": "⊘ SANCTIONED: سرویس آی‌پی ایران را رد می‌کند. با `netdoctor dns --deep` سرور DNS مناسب یا یک mirror پیدا کنید."}}, {"label": {"en": "DNS hijack (10.10.34.x)", "fa": "ربایش DNS (10.10.34.x)"}, "cmd": "netdoctor scan --only filtered.example", "steps": [{"t": {"en": "DNS: ask for the address", "fa": "DNS: پرسیدن آدرس"}, "ms": 22, "st": "bad", "log": ["dns   filtered.example → <span class=\"bad\">10.10.34.35<\/span>", "      answer is in 10.10.34.0/24: national filtering redirect"]}, {"t": {"en": "TCP: skipped", "fa": "TCP: انجام نشد"}, "ms": 0, "st": "warn", "log": []}, {"t": {"en": "TLS: skipped", "fa": "TLS: انجام نشد"}, "ms": 0, "st": "warn", "log": []}, {"t": {"en": "HTTP: skipped", "fa": "HTTP: انجام نشد"}, "ms": 0, "st": "warn", "log": ["<b class=\"bad\">✖ FILTERED<\/b>  (DNS-level filtering redirect)"]}], "verdict": {"st": "bad", "en": "✖ FILTERED at the DNS step. netdoctor only diagnoses; it does not bypass filtering.", "fa": "✖ FILTERED در مرحلهٔ DNS. netdoctor فقط تشخیص می‌دهد و فیلترینگ را دور نمی‌زند."}}, {"label": {"en": "SNI filtering (TLS reset)", "fa": "فیلتر SNI (قطع TLS)"}, "cmd": "netdoctor scan --only filtered.example", "steps": [{"t": {"en": "DNS: ask for the address", "fa": "DNS: پرسیدن آدرس"}, "ms": 35, "st": "ok", "log": ["dns   filtered.example → 203.0.113.7  <span class=\"ok\">35 ms<\/span>"]}, {"t": {"en": "TCP: connect to port 443", "fa": "TCP: اتصال به پورت ۴۴۳"}, "ms": 120, "st": "ok", "log": ["tcp   :443 connected  <span class=\"ok\">120 ms<\/span>"]}, {"t": {"en": "TLS: handshake with SNI", "fa": "TLS: دست‌دادن رمزنگاری‌شده (SNI)"}, "ms": 60, "st": "bad", "log": ["tls   <span class=\"bad\">connection reset by peer<\/span> after ClientHello"]}, {"t": {"en": "HTTP: skipped", "fa": "HTTP: انجام نشد"}, "ms": 0, "st": "warn", "log": ["<b class=\"bad\">✖ FILTERED<\/b>  TLS handshake reset after TCP connect: typical of SNI filtering"]}], "verdict": {"st": "bad", "en": "✖ FILTERED: TLS reset right after connecting, the usual sign of SNI filtering.", "fa": "✖ FILTERED: قطع TLS درست بعد از اتصال؛ نشانهٔ معمول فیلتر SNI."}}]}</script></div></section>
 <section id="start">
   <div class="wrap two">
     <div>
@@ -279,6 +287,9 @@ netdoctor restore</pre>
     </div>
   </div>
 </section>
+
+<!-- mx: latest release (real tag; refreshed from the GitHub API when online) -->
+<section class="mx mx-sec" id="release" aria-labelledby="mx-rel-h"><span class="mx-kick"><span class="mx-live" aria-hidden="true"></span><span lang="en">Latest release</span><span lang="fa">آخرین نسخه</span></span><h2 id="mx-rel-h"><span lang="en">Ready to install</span><span lang="fa">آمادهٔ نصب</span></h2><div class="mx-rel" data-repo="netdoctor-ir" data-mx><div class="mx-ver" data-mx-ver>v0.1.0</div><div class="mx-meta"><span lang="en">Published <b data-mx-date data-iso="2026-10-08T10:12:00Z" lang="en">2026-10-08</b>. Includes Python wheel and source archive.</span><span lang="fa">منتشرشده در <b data-mx-date data-iso="2026-10-08T10:12:00Z" lang="fa">2026-10-08</b>. شامل فایل wheel پایتون و آرشیو سورس.</span></div><div class="mx-btns"><a class="mx-btn p" data-mx-link href="https://github.com/mrzroot/netdoctor-ir/releases/tag/v0.1.0"><span lang="en">Release notes</span><span lang="fa">یادداشت انتشار</span></a><a class="mx-btn" href="https://github.com/mrzroot/netdoctor-ir/blob/main/CHANGELOG.md"><span lang="en">Changelog</span><span lang="fa">تغییرات</span></a><a class="mx-btn" href="https://github.com/mrzroot/netdoctor-ir/releases"><span lang="en">All releases</span><span lang="fa">همهٔ نسخه‌ها</span></a></div></div></section>
 </main>
 
 <footer>
@@ -336,5 +347,6 @@ window.addEventListener('storage',function(e){if(e.key===K||e.key===null)apply(g
 window.addEventListener('pageshow',function(e){if(e.persisted)apply(get(),false)});
 if(window.MutationObserver)new MutationObserver(sync).observe(d,{attributes:true,attributeFilter:['data-lang','lang']});
 /* normalise whatever the boot script set */apply(get(),false)})();</script>
-<script src="fx.js" defer></script></body>
+<script src="fx.js" defer></script><script src="mx.js" defer></script>
+</body>
 </html>
