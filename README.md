@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/banner.svg" alt="netdoctor-ir: why is pip, npm, docker or go failing in Iran?" width="100%">
+
 # netdoctor-ir
 
 **A connectivity doctor and mirror switcher for developers in Iran.**
