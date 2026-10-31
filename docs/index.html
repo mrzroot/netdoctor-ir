@@ -298,7 +298,7 @@ netdoctor restore</pre>
   }
   var saved=null; try{saved=localStorage.getItem('nd-lang');}catch(e){}
   var q=new URLSearchParams(location.search).get('lang');
-  setLang(q==='fa'||q==='en'?q:(saved||((navigator.language||'').toLowerCase().indexOf('fa')===0?'fa':'en')));
+  setLang(q==='fa'||q==='en'?q:(saved||'fa'));
   document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.setLang);});});
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
     var t=document.getElementById(b.dataset.copy).textContent;
