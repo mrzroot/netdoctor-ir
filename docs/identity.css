@@ -1,5 +1,5 @@
 /* netdoctor-ir identity: "CRT". Green phosphor on near-black (dark) / mint paper (light). VT323. ECG trace with arrhythmia on click, scanlines, phosphor glow. */
-@font-face{font-family:'VT323';src:url(fonts/vt323-400.woff2) format('woff2');font-weight:400;font-display:swap}
+
 html[data-theme=dark]:root{--bg:#020a05;--bg2:#04120a;--fg:#c9ffd9;--muted:#6fb88a;--line:#0f3a20;--card:#051a0e;--accent:#33ff7a;--accent2:#b6ff3d;--ok:#33ff7a;--bad:#ff4b4b;--warn:#ffd23d;--mag:#ff6bd5;--code:#010603;--codefg:#9dffbd}
 html[data-theme=light]:root{--bg:#e4efe6;--bg2:#f1f7f2;--fg:#082414;--muted:#3c6a4c;--line:#b3cdb9;--card:#f7fbf8;--accent:#0b7a3a;--accent2:#587d00;--ok:#0b7a3a;--bad:#b3261e;--warn:#8a6100;--mag:#a3245e;--code:#dcebe0;--codefg:#082414}
 html[data-theme=dark] body{text-shadow:0 0 6px rgba(51,255,122,.18)}
@@ -40,3 +40,4 @@ html[data-theme=light] .crt-roll{display:none}
 
 /* QA: keep the "A" (automatic) badge anchored to the theme button */
 html .mrz-tt{position:relative}
+
