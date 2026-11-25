@@ -100,6 +100,19 @@ netdoctor mirrors --write --use pypi=pypi-runflare --use docker=docker-arvanclou
 netdoctor report --md report.md --json report.json
 ```
 
+
+## Collect connectivity evidence before changing settings
+
+Run from the machine where the package operation fails. Record the failing stage (DNS, TCP, TLS or HTTP) and the original client error.
+
+```sh
+netdoctor scan
+```
+
+An HTTP denial is not a DNS failure, and a one-off timeout is not enough to determine the cause. Repeat once from the same environment before filing a report, and remove private details. Keep config-writing options off while diagnosing.
+
+See the [bilingual scenario on the project page](docs/index.html#first-check).
+
 ## Screenshots
 
 All of these are **real** output from `scripts/make_screenshots.py`, captured on the build machine (outside Iran, behind a fake-IP egress proxy; the scan says so itself).

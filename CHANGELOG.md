@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Add a bilingual first-check walkthrough to the project page and document this workflow in the README.
+
+
 ### Added
 - GitHub Actions CI enabled (moved from `.github/pending-workflows/`); CI badge in README.
 

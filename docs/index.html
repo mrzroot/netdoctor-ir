@@ -204,6 +204,13 @@ html[data-theme=light] pre .c{color:#5b6383}html[data-theme=dark] pre .c{color:#
   </div>
 </section>
 
+<section id="first-check" aria-labelledby="first-check-title"><div style="max-width:72rem;margin-inline:auto;padding-inline:clamp(1rem,4vw,3rem)">
+  <p><span lang="en">Project guide</span><span lang="fa" dir="rtl">راهنمای پروژه</span></p>
+  <h2 id="first-check-title"><span lang="en">Collect connectivity evidence before changing settings</span><span lang="fa" dir="rtl">قبل از تغییر تنظیمات، شواهد اتصال را جمع کن</span></h2>
+  <p><span lang="en">Run from the machine where the package operation fails. Record the failing stage (DNS, TCP, TLS or HTTP) and the original client error.</span><span lang="fa" dir="rtl">از همان دستگاهی اجرا کن که نصب بسته روی آن خطا می‌دهد. مرحلهٔ مشکل‌دار (DNS، TCP، TLS یا HTTP) و خطای اصلی ابزار را ثبت کن.</span></p>
+  <pre tabindex="0" dir="ltr" style="overflow:auto;text-align:left;white-space:pre-wrap;overflow-wrap:anywhere"><code>netdoctor scan</code></pre>
+  <details><summary><span lang="en">How to use the result</span><span lang="fa" dir="rtl">با نتیجه چه کار کنم؟</span></summary><p><span lang="en">An HTTP denial is not a DNS failure, and a one-off timeout is not enough to determine the cause. Repeat once from the same environment before filing a report, and remove private details. Keep config-writing options off while diagnosing.</span><span lang="fa" dir="rtl">رد شدن درخواست HTTP با خطای DNS فرق دارد و یک بار قطع شدن زمان انتظار علت را ثابت نمی‌کند. پیش از گزارش، یک بار از همان محیط تکرار کن و جزئیات خصوصی را حذف کن. هنگام تشخیص، گزینه‌های تغییر تنظیمات را فعال نکن.</span></p></details>
+</div></section>
 <section id="how" style="background:var(--bg2);border-block:1px solid var(--line)">
   <div class="wrap">
     <h2><span lang="en">How it works</span><span lang="fa">چطور کار می‌کند</span></h2>
